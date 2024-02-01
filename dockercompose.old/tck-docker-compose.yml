@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  client:
+    image: tck-client
+    # build:
+    #   context: .
+    #   dockerfile: TCK.Bot.Api/ClientApp/Dockerfile
+    ports:
+      - 3000:3000
+  api:
+    image: tck-api
+    # build:
+    #   context: .
+    #   dockerfile: TCK.Bot.Api/Dockerfile
+    ports:
+      - 8000:8000

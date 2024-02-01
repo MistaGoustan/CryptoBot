@@ -1,0 +1,16 @@
+version: '3.4'
+
+# note: it stopped launching the browser once i edited this stuff
+services:
+  tck.bot.api:
+    image: ${DOCKER_REGISTRY-}tckbotapi
+    build:
+      context: .
+      dockerfile: TCK.Bot.Api/Dockerfile
+
+  #tck.bot.ui:
+  #  image: ${DOCKER_REGISTRY-}tckbotui
+  #  build:
+  #    context: .
+  #    dockerfile: TCK.Bot.UI/Dockerfile
+

@@ -1,0 +1,116 @@
+# Docker
+# Build and push an image to Azure Container Registry
+# https://docs.microsoft.com/azure/devops/pipelines/languages/docker
+
+trigger:
+  branches:
+    include:
+      - master
+resources:
+- repo: self
+
+variables:
+  # Container registry service connection established during pipeline creation
+  dockerRegistryServiceConnection: 'f6a30910-1a87-4555-98f0-4408bdf90875'
+  imageRepository: 'tckbotapi'
+  containerRegistry: 'tckcr.azurecr.io'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  tag: '$(Build.BuildId)'
+
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+
+stages:
+- stage: test
+  displayName: Run Tests
+  jobs:
+    - job: test
+      displayName: Run Tests
+      steps:
+        - task: DotNetCoreCLI@2
+          inputs:
+            command: 'test'
+
+- stage: buildPushPublish
+  displayName: Build & Push to ACR
+  jobs:
+  - job: buildAndPush
+    displayName: Build & Push to ACR
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        command: buildAndPush
+        repository: $(imageRepository)
+        dockerfile: $(dockerfilePath)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
+
+- stage: publishToTest
+  displayName: Publish to Test
+  jobs:
+    - job: publishToTest
+      displayName: Publish to Test
+      pool:
+       vmImage: $(vmImageName)
+      steps:
+      - task: AzureWebAppContainer@1
+        inputs:
+          azureSubscription: 'Azure subscription 1 (bcabe7de-e9f2-4033-83cf-52879f82cd0c)'
+          appName: 'TCK-WA-TEST'
+          containers: 'tckcr.azurecr.io/tckbotapi:$(Build.BuildId)'
+
+- stage: waitForBetaValidation
+  displayName: Beta Review
+  jobs:
+    - job: waitForBetaValidation
+      displayName: Beta Review
+      pool: server
+      timeoutInMinutes: 4320 # job times out in 3 days
+      steps:
+      - task: ManualValidation@0
+        inputs:
+          notifyUsers: ''
+
+- stage: publishToBeta
+  displayName: Publish to Beta
+  jobs:
+    - job: publishToBeta
+      displayName: Publish to Beta
+      pool:
+        vmImage: $(vmImageName)
+      steps:
+      - task: AzureWebAppContainer@1
+        inputs:
+          azureSubscription: 'Azure subscription 1 (bcabe7de-e9f2-4033-83cf-52879f82cd0c)'
+          appName: 'TCK-WA-BETA'
+          containers: 'tckcr.azurecr.io/tckbotapi:$(Build.BuildId)'
+
+- stage: waitForProdValidation
+  displayName: Prod Review
+  jobs:
+    - job: waitForProdValidation
+      displayName: Prod Review
+      pool: server
+      timeoutInMinutes: 4320 # job times out in 3 days
+      steps:
+      - task: ManualValidation@0
+        inputs:
+          notifyUsers: ''
+
+- stage: publishToProd
+  displayName: Publish to Prod
+  jobs:
+    - job: publishToProd
+      displayName: Publish to Prod
+      pool:
+        vmImage: $(vmImageName)
+      steps:
+      - task: AzureWebAppContainer@1
+        inputs:
+          azureSubscription: 'Azure subscription 1 (bcabe7de-e9f2-4033-83cf-52879f82cd0c)'
+          appName: 'TCK-WA-PROD'
+          containers: 'tckcr.azurecr.io/tckbotapi:$(Build.BuildId)'
