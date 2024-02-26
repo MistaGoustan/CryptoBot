@@ -2,6 +2,6 @@
 {
     public interface ISignalTradeDecider
     {
-        Task<Boolean> CanTradeAsync(String interval, OrderSide orderSide, String ticker);
+        Task<bool> CanTradeAsync(string interval, OrderSide orderSide, string ticker);
     }
 }

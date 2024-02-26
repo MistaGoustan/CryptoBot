@@ -45,7 +45,7 @@ namespace TCK.Common.WebJobs
             }
         }
 
-        protected IActionResult NotAuthorized() => new StatusCodeResult((Int32)HttpStatusCode.Unauthorized);
+        protected IActionResult NotAuthorized() => new StatusCodeResult((int)HttpStatusCode.Unauthorized);
 
         protected IActionResult Ok(Object value) => new OkObjectResult(value);
     }

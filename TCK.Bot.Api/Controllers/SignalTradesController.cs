@@ -32,7 +32,7 @@ namespace TCK.Bot.Api.Controllers
         [ProducesResponseType(typeof(SignalOrder), StatusCodes.Status200OK, "application/json")]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest, "application/json")]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError, "application/json")]
-        public IActionResult Run(Exchange exchange, Boolean isDetailedTrades, Int16 numberOfOrders, String ticker) =>
+        public IActionResult Run(Exchange exchange, bool isDetailedTrades, short numberOfOrders, string ticker) =>
             ErrorHandler(() => GetRecentSignalTradesAsync(exchange, isDetailedTrades, numberOfOrders, ticker));
 
         private async Task<IActionResult> CreateSignalTradeAsync(SignalTradeRequest request)
@@ -51,7 +51,7 @@ namespace TCK.Bot.Api.Controllers
             return Ok($"Unable to SignalTrade.");
         }
 
-        private IActionResult GetRecentSignalTradesAsync(Exchange exchange, Boolean isDetailedTrades, Int16 numberOfOrders, String ticker)
+        private IActionResult GetRecentSignalTradesAsync(Exchange exchange, bool isDetailedTrades, short numberOfOrders, string ticker)
         {
             var orders = _tradeSerivce.GetRecentOrdersAsync(exchange, isDetailedTrades, numberOfOrders, ticker);
 

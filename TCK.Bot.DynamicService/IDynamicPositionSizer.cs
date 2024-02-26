@@ -2,6 +2,6 @@
 {
     public interface IDynamicPositionSizer
     {
-        Task<Decimal> GetDynamicBuySizeAsync(Decimal accountBalance, Decimal averagePrice, Exchange exchange, Decimal stopPrice, String ticker);
+        Task<decimal> GetDynamicBuySizeAsync(decimal accountBalance, decimal averagePrice, Exchange exchange, decimal stopPrice, string ticker);
     }
 }

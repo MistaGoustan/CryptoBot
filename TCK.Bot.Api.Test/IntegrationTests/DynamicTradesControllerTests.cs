@@ -11,8 +11,8 @@
 //    public class DynamicTradesControllerTests : IClassFixture<ApiFixture>, IDisposable
 //    {
 //        private readonly ApiFixture _fixture;
-//        private const String _requestUri = "api/dynamic-trades";
-//        private const String _ticker = "USDTUSD";
+//        private const string _requestUri = "api/dynamic-trades";
+//        private const string _ticker = "USDTUSD";
 
 //        public DynamicTradesControllerTests(ApiFixture fixture)
 //        {

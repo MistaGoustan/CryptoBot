@@ -10,7 +10,7 @@ namespace TCK.Bot.Services
             _binance = binance;
         }
 
-        public async Task SubscribeAsync(Exchange exchange, String ticker, TradeType tradeType)
+        public async Task SubscribeAsync(Exchange exchange, string ticker, TradeType tradeType)
         {
             switch (exchange)
             {

@@ -4,12 +4,12 @@
     {
         void AddGroup(DynamicOrder[] orders);
 
-        DynamicOrder[] GetGroup(String ticker);
+        DynamicOrder[] GetGroup(string ticker);
 
         List<DynamicOrder[]>? GetAllGroups();
 
-        DynamicOrder[]? GetGroupOrDefault(String ticker);
+        DynamicOrder[]? GetGroupOrDefault(string ticker);
 
-        void RemoveGroup(String ticker);
+        void RemoveGroup(string ticker);
     }
 }

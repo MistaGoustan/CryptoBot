@@ -2,6 +2,6 @@
 {
     public interface IInProgressOrderAnalyzer
     {
-        Task<Boolean> ForPriceWithTickerAsync(Decimal lastPrice, DynamicOrder order);
+        Task<bool> ForPriceWithTickerAsync(decimal lastPrice, DynamicOrder order);
     }
 }

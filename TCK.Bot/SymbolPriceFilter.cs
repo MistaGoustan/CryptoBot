@@ -2,8 +2,8 @@
 {
     public sealed class SymbolPriceFilter
     {
-        public Decimal MaxPrice { get; set; }
-        public Decimal MinPrice { get; set; }
-        public Decimal TickSize { get; set; }
+        public decimal MaxPrice { get; set; }
+        public decimal MinPrice { get; set; }
+        public decimal TickSize { get; set; }
     }
 }

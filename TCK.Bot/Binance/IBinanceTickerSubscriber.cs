@@ -2,6 +2,6 @@
 {
     public interface IBinanceTickerSubscriber
     {
-        public Task SubscribeAsync(String ticker);
+        public Task SubscribeAsync(string ticker);
     }
 }

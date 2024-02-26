@@ -3,6 +3,6 @@ namespace TCK.Bot.Services
 {
     public interface ITickerValidator
     {
-        Task<Boolean> TickerPairExistsAsync(Exchange exchange, String ticker);
+        Task<bool> TickerPairExistsAsync(Exchange exchange, string ticker);
     }
 }

@@ -2,8 +2,8 @@
 {
     public sealed class BinanceOptions
     {
-        public String ApiKey { get; set; } = default!;
-        public Boolean CheckBalance { get; set; } = default!;
-        public String Secret { get; set; } = default!;
+        public string ApiKey { get; set; } = default!;
+        public bool CheckBalance { get; set; } = default!;
+        public string Secret { get; set; } = default!;
     }
 }

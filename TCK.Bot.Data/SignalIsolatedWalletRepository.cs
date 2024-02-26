@@ -12,7 +12,7 @@ namespace TCK.Bot.Data
     internal sealed class SignalIsolatedWalletRepository : ISignalIsolatedWalletRepository
     {
         private readonly IDbConnection _db;
-        private readonly Decimal _defaultWalletSize;
+        private readonly decimal _defaultWalletSize;
         private readonly ITickerValidator _tickerValidator;
         private readonly TelemetryClient _telemetry;
 
@@ -26,7 +26,7 @@ namespace TCK.Bot.Data
             _telemetry = telemetry;
         }
 
-        public void DeleteWalletWithTicker(String ticker)
+        public void DeleteWalletWithTicker(string ticker)
         {
             var sql =
                 "DELETE FROM [dbo].[SignalIsolatedWallet] " +
@@ -38,7 +38,7 @@ namespace TCK.Bot.Data
             });
         }
 
-        public async Task<Decimal> GetBalanceAsync(Exchange exchange, String ticker)
+        public async Task<decimal> GetBalanceAsync(Exchange exchange, string ticker)
         {
             var sql = "SELECT * FROM [dbo].[SignalIsolatedWallet] WHERE Ticker = @Ticker";
 
@@ -53,7 +53,7 @@ namespace TCK.Bot.Data
             return wallet.Balance;
         }
 
-        public async Task UpdateBalanceAsync(String ticker, Decimal newBalance, Decimal price)
+        public async Task UpdateBalanceAsync(string ticker, decimal newBalance, decimal price)
         {
             var sql = "UPDATE [dbo].[SignalIsolatedWallet] SET Balance = @Balance WHERE Ticker = @Ticker";
 
@@ -64,7 +64,7 @@ namespace TCK.Bot.Data
             });
         }
 
-        private async Task<IsolatedWallet> CreateWallet(Exchange exchange, String ticker)
+        private async Task<IsolatedWallet> CreateWallet(Exchange exchange, string ticker)
         {
             if (!await _tickerValidator.TickerPairExistsAsync(exchange, ticker))
                 throw new Exception($"Signal Wallet creation exception: Ticker pair does not exist on {Enum.GetName(exchange)}.");

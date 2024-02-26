@@ -25,7 +25,7 @@ namespace TCK.Bot.DynamicService
             subscriptions.Add(subscription);
         }
 
-        public Subscription GetOrDefault(String ticker)
+        public Subscription GetOrDefault(string ticker)
         {
             var subscription = subscriptions.FirstOrDefault(s => s.Ticker == ticker)
                 ?? throw new Exception("Subscription does not exist");

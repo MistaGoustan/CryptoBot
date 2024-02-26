@@ -4,7 +4,7 @@ namespace TCK.Exchanges.Binance
 {
     public interface IBinanceFeeCalculator
     {
-        Task<Decimal> GetFeeAsync(Decimal fee, String feeType, Decimal price);
-        Task<Decimal> GetTotaledFeeAsync(IEnumerable<BinanceOrderTrade>? trades);
+        Task<decimal> GetFeeAsync(decimal fee, string feeType, decimal price);
+        Task<decimal> GetTotaledFeeAsync(IEnumerable<BinanceOrderTrade>? trades);
     }
 }

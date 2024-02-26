@@ -2,7 +2,7 @@
 {
     public sealed class IsolatedWallet
     {
-        public String Ticker { get; set; } = default!;
-        public Decimal Balance { get; set; }
+        public string Ticker { get; set; } = default!;
+        public decimal Balance { get; set; }
     }
 }

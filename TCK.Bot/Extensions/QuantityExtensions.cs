@@ -2,10 +2,10 @@
 {
     public static class QuantityExtensions
     {
-        public static Decimal ToSize(this Decimal quantity, Decimal price)
+        public static decimal ToSize(this decimal quantity, decimal price)
             => quantity * price;
 
-        public static Decimal ToSize(this Decimal quantity, Decimal price, Decimal fee)
+        public static decimal ToSize(this decimal quantity, decimal price, decimal fee)
             => quantity * price - fee;
     }
 }

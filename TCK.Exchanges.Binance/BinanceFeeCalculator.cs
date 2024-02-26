@@ -14,7 +14,7 @@ namespace TCK.Exchanges.Binance
             _market = market;
         }
 
-        public async Task<Decimal> GetFeeAsync(Decimal fee, String feeType, Decimal price)
+        public async Task<decimal> GetFeeAsync(decimal fee, string feeType, decimal price)
         {
             if (feeType.IsStableCoin())
             {
@@ -28,7 +28,7 @@ namespace TCK.Exchanges.Binance
             return fee * price;
         }
 
-        public async Task<Decimal> GetTotaledFeeAsync(IEnumerable<BinanceOrderTrade>? trades)
+        public async Task<decimal> GetTotaledFeeAsync(IEnumerable<BinanceOrderTrade>? trades)
         {
             if (trades is null)
                 throw new Exception("Cannot get fees from null trades.");
@@ -52,7 +52,7 @@ namespace TCK.Exchanges.Binance
             return totaledFee;
         }
 
-        private static Decimal AveragePrice(IEnumerable<BinanceOrderTrade> trades)
+        private static decimal AveragePrice(IEnumerable<BinanceOrderTrade> trades)
         {
             var price = 0m;
 
@@ -64,7 +64,7 @@ namespace TCK.Exchanges.Binance
             return price / trades.Count();
         }
 
-        private async Task<Decimal> GetPriceOfFeeType(String feeType, IEnumerable<BinanceOrderTrade> trades)
+        private async Task<decimal> GetPriceOfFeeType(string feeType, IEnumerable<BinanceOrderTrade> trades)
         {
             if (feeType == "BNB")
             {

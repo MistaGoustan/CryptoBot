@@ -25,14 +25,14 @@ namespace TCK.Bot.Test.UnitTests
         [InlineData(1, false, true)]
         [InlineData(400, true, true)]
         [InlineData(401, true, true)]
-        public async Task HasEnoughInAccountAsync_ShouldCheckBalanceAccordingly(Decimal availableBalance, Boolean expectedValue, Boolean isWeighted)
+        public async Task HasEnoughInAccountAsync_ShouldCheckBalanceAccordingly(decimal availableBalance, bool expectedValue, bool isWeighted)
         {
             // ARRANGE
             var uncachedOrders = CreateUncachedOrders();
             var cachedOrderGroups = CreateCachedOrderGroups();
 
             var binance = new Mock<IBinanceSpotMarketConnection>();
-            binance.Setup(m => m.GetAvailableBalanceAsync(It.IsAny<String>()))
+            binance.Setup(m => m.GetAvailableBalanceAsync(It.IsAny<string>()))
                   .Returns(Task.FromResult(availableBalance));
 
             var cache = new Mock<IDynamicOrderCache>();
@@ -41,7 +41,7 @@ namespace TCK.Bot.Test.UnitTests
             var subject = new BalanceChecker(binance.Object, cache.Object);
 
             // ACT
-            var result = await subject.HasEnoughInAccountAsync(It.IsAny<String>(), Exchange.Binance, isWeighted, uncachedOrders);
+            var result = await subject.HasEnoughInAccountAsync(It.IsAny<string>(), Exchange.Binance, isWeighted, uncachedOrders);
 
             // ASSERT
             result.ShouldBe(expectedValue);

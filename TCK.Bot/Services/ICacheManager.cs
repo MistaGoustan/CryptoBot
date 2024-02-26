@@ -2,9 +2,9 @@
 {
     public interface ICacheManager
     {
-        SignalOrder GetSignalOrder(Exchange exchange, String ticker);
+        SignalOrder GetSignalOrder(Exchange exchange, string ticker);
 
-        void RemoveSignalOrder(Exchange exchange, String ticker);
+        void RemoveSignalOrder(Exchange exchange, string ticker);
 
         void SetSignalOrder(SignalOrder order);
     }

@@ -17,13 +17,13 @@ namespace TCK.Exchanges.Binance
             _mapper = mapper;
         }
 
-        public async Task<Decimal> GetAvgPriceAsync(String ticker)
+        public async Task<decimal> GetAvgPriceAsync(string ticker)
         {
             var result = await Client.SpotApi.ExchangeData.GetCurrentAvgPriceAsync(ticker);
             return result.Data.Price;
         }
 
-        public async Task<Decimal> GetAvailableBalanceAsync(String tickerHalf)
+        public async Task<decimal> GetAvailableBalanceAsync(string tickerHalf)
         {
             var openOrders = await Client.SpotApi.Trading.GetOpenOrdersAsync();
             var unavailableBalance = 0m;
@@ -44,14 +44,14 @@ namespace TCK.Exchanges.Binance
             return balance;
         }
 
-        public async Task<Int32> GetBaseAssetPrecisionAsync(String ticker)
+        public async Task<int> GetBaseAssetPrecisionAsync(string ticker)
         {
             var symbol = await GetSymbolAsync(ticker);
 
             return symbol.BaseAssetPrecision;
         }
 
-        public async Task<SymbolLotSizeFilter> GetLotSizeAsync(String ticker)
+        public async Task<SymbolLotSizeFilter> GetLotSizeAsync(string ticker)
         {
             var info = await Client.SpotApi.ExchangeData.GetExchangeInfoAsync(ticker);
 
@@ -62,7 +62,7 @@ namespace TCK.Exchanges.Binance
             return filter;
         }
 
-        public async Task<SymbolPriceFilter> GetPriceFilterAsync(String ticker)
+        public async Task<SymbolPriceFilter> GetPriceFilterAsync(string ticker)
         {
             var symbol = await GetSymbolAsync(ticker);
             var binanceFilter = symbol.PriceFilter ?? throw new NullReferenceException($"PriceFilter does not exist for {ticker}");
@@ -72,7 +72,7 @@ namespace TCK.Exchanges.Binance
             return filter;
         }
 
-        public async Task<SymbolPercentPriceFilter> GetPricePercentFilterAsync(String ticker)
+        public async Task<SymbolPercentPriceFilter> GetPricePercentFilterAsync(string ticker)
         {
             var symbol = await GetSymbolAsync(ticker);
             var binanceFilter = symbol.PricePercentFilter ?? throw new NullReferenceException($"PricePercentFilter does not exist for {ticker}");
@@ -82,13 +82,13 @@ namespace TCK.Exchanges.Binance
             return filter;
         }
 
-        public async Task<Boolean> TickerPairExistsAsync(String ticker)
+        public async Task<bool> TickerPairExistsAsync(string ticker)
         {
             var result = await Client.SpotApi.ExchangeData.GetTickerAsync(ticker);
             return result.Data != null;
         }
 
-        private async Task<BinanceSymbol> GetSymbolAsync(String ticker)
+        private async Task<BinanceSymbol> GetSymbolAsync(string ticker)
         {
             var exchangeInfo = await Client.SpotApi.ExchangeData.GetExchangeInfoAsync(ticker);
             var symbol = exchangeInfo.Data?.Symbols?.FirstOrDefault() ?? throw new Exception("Symbol does not exist");

@@ -9,7 +9,7 @@
             _market = market;
         }
 
-        public async Task<SymbolLotSizeFilter> ForSymbolAsync(Exchange exchange, String ticker)
+        public async Task<SymbolLotSizeFilter> ForSymbolAsync(Exchange exchange, string ticker)
         {
             return await _market.GetLotSizeAsync(exchange, ticker);
         }

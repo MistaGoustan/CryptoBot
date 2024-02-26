@@ -11,8 +11,8 @@
 //    public class SignalTradesControllerTests : IClassFixture<ApiFixture>, IDisposable
 //    {
 //        private readonly ApiFixture _fixture;
-//        private const String _requestUri = "api/signal-trades";
-//        private const String _ticker = "USDTUSD";
+//        private const string _requestUri = "api/signal-trades";
+//        private const string _ticker = "USDTUSD";
 
 //        public SignalTradesControllerTests(ApiFixture fixture)
 //        {

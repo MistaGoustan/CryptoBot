@@ -2,8 +2,8 @@
 {
     public interface IDynamicIsolatedWalletRepository
     {
-        void DeleteWalletWithTicker(String ticker);
-        Task<DynamicIsolatedWallet> GetWalletAsync(Exchange exchange, String ticker);
+        void DeleteWalletWithTicker(string ticker);
+        Task<DynamicIsolatedWallet> GetWalletAsync(Exchange exchange, string ticker);
         DynamicIsolatedWallet UpdateWallet(DynamicIsolatedWallet wallet);
     }
 }

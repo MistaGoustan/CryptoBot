@@ -234,11 +234,11 @@ namespace TCK.Bot.DynamicService.Test.UnitTests
             orders[2].FundingFee.ShouldBe(0);
         }
 
-        private DynamicPNLCalculator CreateCalculator(Decimal fundingFee)
+        private DynamicPNLCalculator CreateCalculator(decimal fundingFee)
         {
             var market = new Mock<IMarketConnection>();
 
-            market.Setup(m => m.GetTotalFundingFeeAsync(It.IsAny<Exchange>(), It.IsAny<DateTime>(), It.IsAny<String>()).Result)
+            market.Setup(m => m.GetTotalFundingFeeAsync(It.IsAny<Exchange>(), It.IsAny<DateTime>(), It.IsAny<string>()).Result)
                   .Returns(fundingFee);
 
             return new DynamicPNLCalculator(market.Object);

@@ -3,6 +3,6 @@ namespace TCK.Bot.Services
 {
     public interface ILotSizeRetriever
     {
-        Task<SymbolLotSizeFilter> ForSymbolAsync(Exchange exchange, String ticker);
+        Task<SymbolLotSizeFilter> ForSymbolAsync(Exchange exchange, string ticker);
     }
 }

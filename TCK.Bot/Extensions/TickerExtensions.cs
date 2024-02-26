@@ -2,7 +2,7 @@
 {
     public static class TickerExtensions
     {
-        public static String ToTickerRight(this String ticker)
+        public static string ToTickerRight(this string ticker)
         {
             if (ticker.Contains("USDT"))
             {
@@ -24,7 +24,7 @@
             throw new Exception("Ticker does not contain valid tickerbase.");
         }
 
-        public static String ToTickerLeft(this String ticker)
+        public static string ToTickerLeft(this string ticker)
         {
             if (ticker.Contains("USDT"))
             {
@@ -46,23 +46,23 @@
             throw new Exception("Ticker does not contain valid tickerbase.");
         }
 
-        public static Boolean IsStableCoin(this String ticker) =>
+        public static bool IsStableCoin(this string ticker) =>
             ticker.Equals("USDT")
             || ticker.Equals("BUSD")
             || ticker.Equals("USDC");
 
-        private static String GetLeftSide(String ticker, String tickerBase)
+        private static string GetLeftSide(string ticker, string tickerBase)
         {
             var part = ticker.Split(tickerBase);
 
-            return part[0] == String.Empty ? tickerBase : part[0];
+            return part[0] == string.Empty ? tickerBase : part[0];
         }
 
-        private static String GetRightSide(String ticker, String tickerBase)
+        private static string GetRightSide(string ticker, string tickerBase)
         {
             var part = ticker.Split(tickerBase);
 
-            return part[1] == String.Empty ? tickerBase : part[1];
+            return part[1] == string.Empty ? tickerBase : part[1];
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface ITickerSubscriber
     {
-        Task SubscribeAsync(Exchange exchange, String ticker, TradeType tradeType);
+        Task SubscribeAsync(Exchange exchange, string ticker, TradeType tradeType);
     }
 }

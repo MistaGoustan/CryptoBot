@@ -4,12 +4,12 @@ namespace TCK.Common.WebJobs
 {
     public sealed class BadRequestException : Exception
     {
-        public BadRequestException(String reason)
+        public BadRequestException(string reason)
             : base(reason)
         {
         }
 
-        public BadRequestException(String reason, Exception innerException)
+        public BadRequestException(string reason, Exception innerException)
             : base(reason, innerException)
         {
         }

@@ -2,7 +2,7 @@
 {
     public static class SizeExtensions
     {
-        public static Decimal ToStepSize(this Decimal size, SymbolLotSizeFilter lotSize)
+        public static decimal ToStepSize(this decimal size, SymbolLotSizeFilter lotSize)
         {
             size = Math.Floor(size / lotSize.StepSize) * lotSize.StepSize;
 
@@ -16,7 +16,7 @@
                 return lotSize.MaxQuantity;
             }
 
-            return Decimal.Round(size, 8);
+            return decimal.Round(size, 8);
         }
     }
 }

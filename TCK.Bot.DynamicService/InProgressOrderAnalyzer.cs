@@ -6,7 +6,7 @@ namespace TCK.Bot.DynamicService
 {
     internal class InProgressOrderAnalyzer : IInProgressOrderAnalyzer
     {
-        private readonly Boolean _isProduction;
+        private readonly bool _isProduction;
         private readonly ILogger<InProgressOrderAnalyzer> _logger;
         private readonly IDynamicOrderService _orderService;
         public InProgressOrderAnalyzer(IOptions<ConfigurationOptions> configuration,
@@ -18,7 +18,7 @@ namespace TCK.Bot.DynamicService
             _orderService = orderService;
         }
 
-        public async Task<Boolean> ForPriceWithTickerAsync(Decimal lastPrice, DynamicOrder order)
+        public async Task<bool> ForPriceWithTickerAsync(decimal lastPrice, DynamicOrder order)
         {
             if (HasHitTargetPrice(lastPrice, order.PositionSide, order.TargetPrice))
             {
@@ -41,13 +41,13 @@ namespace TCK.Bot.DynamicService
             return false;
         }
 
-        private Boolean HasHitStopPrice(Decimal lastPrice, PositionSide side, Decimal stopPrice) =>
+        private bool HasHitStopPrice(decimal lastPrice, PositionSide side, decimal stopPrice) =>
             side is PositionSide.Long ? lastPrice < stopPrice : lastPrice > stopPrice;
 
-        private Boolean HasHitTargetPrice(Decimal lastPrice, PositionSide side, Decimal targetPrice) =>
+        private bool HasHitTargetPrice(decimal lastPrice, PositionSide side, decimal targetPrice) =>
             side is PositionSide.Long ? lastPrice > targetPrice : lastPrice < targetPrice;
 
-        private async Task<DynamicOrder> TriggerSellAsync(DynamicOrder order, Decimal sellPrice)
+        private async Task<DynamicOrder> TriggerSellAsync(DynamicOrder order, decimal sellPrice)
         {
             var placedOrder = order.PositionSide is PositionSide.Long ?
                         await _orderService.PlaceMarketSellAsync(order.Exchange, sellPrice, order.QuantityQuoted, order.PositionSide, order.Ticker) :

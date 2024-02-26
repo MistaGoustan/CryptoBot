@@ -28,7 +28,7 @@ namespace TCK.Exchanges.Binance
             _market = market;
         }
 
-        public async Task<PlacedOrder> PlaceLimitBuyAsync(String ticker, Decimal quantity, Decimal price)
+        public async Task<PlacedOrder> PlaceLimitBuyAsync(string ticker, decimal quantity, decimal price)
         {
             if (_configuration.IsProduction)
             {
@@ -55,7 +55,7 @@ namespace TCK.Exchanges.Binance
             };
         }
 
-        public async Task<PlacedOrder> PlaceLimitSellAsync(String ticker, Decimal quantity, Decimal price)
+        public async Task<PlacedOrder> PlaceLimitSellAsync(string ticker, decimal quantity, decimal price)
         {
             if (_configuration.IsProduction)
             {
@@ -82,7 +82,7 @@ namespace TCK.Exchanges.Binance
             };
         }
 
-        public async Task<PlacedOrder> PlaceMarketBuyAsync(Decimal price, Decimal quantity, String ticker)
+        public async Task<PlacedOrder> PlaceMarketBuyAsync(decimal price, decimal quantity, string ticker)
         {
             if (_configuration.IsProduction)
             {
@@ -107,7 +107,7 @@ namespace TCK.Exchanges.Binance
             };
         }
 
-        public async Task<PlacedOrder> PlaceMarketSellAsync(Decimal price, Decimal quantity, String ticker)
+        public async Task<PlacedOrder> PlaceMarketSellAsync(decimal price, decimal quantity, string ticker)
         {
             if (_configuration.IsProduction)
             {

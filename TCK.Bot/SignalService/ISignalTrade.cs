@@ -4,7 +4,7 @@ namespace TCK.Bot.SignalService
 {
     public interface ISignalTrade
     {
-        Task<IEnumerable<Object>?> GetRecentOrdersAsync(Exchange exchange, Boolean isDetailedTrades, Int16 numberOfOrders, String ticker);
+        Task<IEnumerable<Object>?> GetRecentOrdersAsync(Exchange exchange, bool isDetailedTrades, short numberOfOrders, string ticker);
         Task<SignalOrder> TradeAsync(SignalTradeRequest request);
     }
 }

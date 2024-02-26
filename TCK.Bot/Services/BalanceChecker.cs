@@ -14,7 +14,7 @@ namespace TCK.Bot.Services
             _cache = cache;
         }
 
-        public async Task<Boolean> HasEnoughInAccountAsync(String baseAsset, Exchange exchange, Boolean isWeighted, DynamicOrder[] uncahcedOrders)
+        public async Task<bool> HasEnoughInAccountAsync(string baseAsset, Exchange exchange, bool isWeighted, DynamicOrder[] uncahcedOrders)
         {
             var cachedPendingBalance = CalculateCachedPendingBalance(exchange);
             var uncachedPendingBalance = CalculateUncachedPendingBalance(isWeighted, uncahcedOrders);
@@ -28,14 +28,14 @@ namespace TCK.Bot.Services
             }
         }
 
-        private Decimal CalculateCachedPendingBalance(Exchange exchange)
+        private decimal CalculateCachedPendingBalance(Exchange exchange)
         {
             var groups = _cache.GetAllGroups();
 
             if (groups is null || !groups.Any())
                 return 0;
 
-            Decimal total = 0;
+            decimal total = 0;
 
             foreach (var orders in groups)
             {
@@ -57,7 +57,7 @@ namespace TCK.Bot.Services
             return total;
         }
 
-        private Decimal CalculateUncachedPendingBalance(Boolean isWeighted, DynamicOrder[] orders)
+        private decimal CalculateUncachedPendingBalance(bool isWeighted, DynamicOrder[] orders)
         {
             var totalQty = orders.Sum(o => o.QuantityQuoted);
             var avgPrice = isWeighted ? GetWeightedAvgPriceWithMod(orders).AveragedEntry : GetEqualAveragedEntry(orders);
@@ -65,18 +65,18 @@ namespace TCK.Bot.Services
             return (totalQty * avgPrice);
         }
 
-        private async Task<Boolean> DoesBinanceHaveEnoughAsync(String baseAsset, Decimal existingPendingBalance, Decimal newPendingBalance)
+        private async Task<bool> DoesBinanceHaveEnoughAsync(string baseAsset, decimal existingPendingBalance, decimal newPendingBalance)
         {
             var availableExchangeBalance = await _binance.GetAvailableBalanceAsync(baseAsset);
 
             return availableExchangeBalance >= (newPendingBalance + existingPendingBalance);
         }
 
-        private Decimal GetEqualAveragedEntry(DynamicOrder[] orders)
+        private decimal GetEqualAveragedEntry(DynamicOrder[] orders)
         {
             var averagedEntry = orders[0].BuyPrice;
 
-            for (Int16 i = 0; i <= orders.Length - 1; i++)
+            for (short i = 0; i <= orders.Length - 1; i++)
             {
                 if (i is 0)
                 {
@@ -92,12 +92,12 @@ namespace TCK.Bot.Services
             return averagedEntry;
         }
 
-        private (Decimal AveragedEntry, Decimal Modifier) GetWeightedAvgPriceWithMod(DynamicOrder[] orders)
+        private (decimal AveragedEntry, decimal Modifier) GetWeightedAvgPriceWithMod(DynamicOrder[] orders)
         {
             var averagedEntry = orders[0].BuyPrice;
             var modifier = 1m;
 
-            for (Int16 i = 0; i <= orders.Length - 1; i++)
+            for (short i = 0; i <= orders.Length - 1; i++)
             {
                 if (i is 0)
                 {

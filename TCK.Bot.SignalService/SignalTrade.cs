@@ -25,7 +25,7 @@ namespace TCK.Bot.SignalService
             _tickerSubscriber = tickerSubscriber;
         }
 
-        public async Task<IEnumerable<Object>?> GetRecentOrdersAsync(Exchange exchange, Boolean isDetailedTrades, Int16 numberOfOrders, String ticker)
+        public async Task<IEnumerable<Object>?> GetRecentOrdersAsync(Exchange exchange, bool isDetailedTrades, short numberOfOrders, string ticker)
         {
             var orders = await _orderRepository.GetRecentOrdersAsync(exchange, numberOfOrders, ticker);
 
@@ -110,10 +110,10 @@ namespace TCK.Bot.SignalService
             };
         }
 
-        private Decimal CalculateStopPrice(PositionSide side, Decimal price, Decimal stopPercent) =>
+        private decimal CalculateStopPrice(PositionSide side, decimal price, decimal stopPercent) =>
             side is PositionSide.Long ? price - price * stopPercent : price + price * stopPercent;
 
-        private Decimal FormatDecimal(Decimal num) =>
+        private decimal FormatDecimal(decimal num) =>
             num < 1 ? Math.Round(num, 8) : Math.Round(num, 3);
 
         private async Task<PlacedOrder> PlaceBuyOrderAsync(SignalOrder order, PositionSide side) =>

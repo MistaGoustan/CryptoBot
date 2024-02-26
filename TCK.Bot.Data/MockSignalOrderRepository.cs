@@ -20,19 +20,19 @@ namespace TCK.Bot.Data
             return _innerRepo.CreateOrder(order, side);
         }
 
-        public Task<SignalOrder?> GetInProgressOrderByIntervalAsync(Exchange exchange, String ticker, String interval) =>
+        public Task<SignalOrder?> GetInProgressOrderByIntervalAsync(Exchange exchange, string ticker, string interval) =>
             _innerRepo.GetInProgressOrderByIntervalAsync(exchange, ticker, interval);
 
         public Task<IEnumerable<SignalOrder>?> GetInProgressOrders() =>
             _innerRepo.GetInProgressOrders();
 
-        public Task<IEnumerable<SignalOrder>> GetOrdersByIntervalAsync(String ticker, String interval) =>
+        public Task<IEnumerable<SignalOrder>> GetOrdersByIntervalAsync(string ticker, string interval) =>
             _innerRepo.GetOrdersByIntervalAsync(ticker, interval);
 
-        public Task<SignalOrder?> GetOrderByOrderIdAsync(Exchange exchange, String orderId) =>
+        public Task<SignalOrder?> GetOrderByOrderIdAsync(Exchange exchange, string orderId) =>
             _innerRepo.GetOrderByOrderIdAsync(exchange, orderId);
 
-        public Task<IEnumerable<SignalOrder>?> GetRecentOrdersAsync(Exchange exchange, Int16 numberOfOrders, String ticker) =>
+        public Task<IEnumerable<SignalOrder>?> GetRecentOrdersAsync(Exchange exchange, short numberOfOrders, string ticker) =>
             _innerRepo.GetRecentOrdersAsync(exchange, numberOfOrders, ticker);
 
         public SignalOrder UpdateOrder(SignalOrder order, OrderSide side)

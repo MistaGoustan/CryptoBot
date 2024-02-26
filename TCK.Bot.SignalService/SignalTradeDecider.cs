@@ -8,7 +8,7 @@ namespace TCK.Bot.SignalService
         public SignalTradeDecider(ISignalOrderRepository orderRepository) =>
             _orderRepository = orderRepository;
 
-        public async Task<Boolean> CanTradeAsync(String interval, OrderSide orderSide, String ticker)
+        public async Task<bool> CanTradeAsync(string interval, OrderSide orderSide, string ticker)
         {
             var orders = await _orderRepository.GetOrdersByIntervalAsync(ticker, interval);
 
@@ -20,10 +20,10 @@ namespace TCK.Bot.SignalService
             };
         }
 
-        private Boolean CanBuy(IEnumerable<SignalOrder> orders) =>
+        private bool CanBuy(IEnumerable<SignalOrder> orders) =>
             !orders.Any(o => o.Status == SignalOrderStatus.InProgress);
 
-        private Boolean CanSell(IEnumerable<SignalOrder> orders) =>
+        private bool CanSell(IEnumerable<SignalOrder> orders) =>
             orders.Any(o => o.Status == SignalOrderStatus.InProgress);
     }
 }

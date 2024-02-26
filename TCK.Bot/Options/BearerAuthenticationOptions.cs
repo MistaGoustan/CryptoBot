@@ -2,9 +2,9 @@
 {
     public class BearerAuthenticationOptions
     {
-        public String Audience { get; set; } = default!;
+        public string Audience { get; set; } = default!;
         public Double ExpireTimeInMinutes { get; set; } = default!;
-        public String Issuer { get; set; } = default!;
-        public String Key { get; set; } = default!;
+        public string Issuer { get; set; } = default!;
+        public string Key { get; set; } = default!;
     }
 }

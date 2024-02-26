@@ -7,7 +7,7 @@ namespace TCK.Bot.Data.Test.IntegrationTests
 {
     public sealed class DynamicOrderRepositoryTests : IClassFixture<DatabaseFixture>, IDisposable
     {
-        private readonly String _tickerTestName = "DOR/TEST";
+        private readonly string _tickerTestName = "DOR/TEST";
         private readonly DynamicOrderRepository _subject;
 
         public DynamicOrderRepositoryTests(DatabaseFixture databaseFixture)

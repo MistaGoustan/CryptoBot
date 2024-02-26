@@ -11,7 +11,7 @@ namespace TCK.Bot.SignalService
             _binance = binance;
         }
 
-        public async Task<PlacedOrder> PlaceLimitBuyAsync(Exchange exchange, Decimal price, Decimal quantity, String ticker)
+        public async Task<PlacedOrder> PlaceLimitBuyAsync(Exchange exchange, decimal price, decimal quantity, string ticker)
         {
             switch (exchange)
             {
@@ -23,7 +23,7 @@ namespace TCK.Bot.SignalService
             }
         }
 
-        public async Task<PlacedOrder> PlaceLimitSellAsync(Exchange exchange, Decimal price, Decimal quantity, String ticker)
+        public async Task<PlacedOrder> PlaceLimitSellAsync(Exchange exchange, decimal price, decimal quantity, string ticker)
         {
             switch (exchange)
             {
@@ -35,7 +35,7 @@ namespace TCK.Bot.SignalService
             }
         }
 
-        public async Task<PlacedOrder> PlaceMarketBuyAsync(Exchange exchange, Decimal price, Decimal quantity, PositionSide side, String ticker)
+        public async Task<PlacedOrder> PlaceMarketBuyAsync(Exchange exchange, decimal price, decimal quantity, PositionSide side, string ticker)
         {
             switch (exchange)
             {
@@ -47,7 +47,7 @@ namespace TCK.Bot.SignalService
             }
         }
 
-        public async Task<PlacedOrder> PlaceMarketSellAsync(Exchange exchange, Decimal price, Decimal quantity, PositionSide side, String ticker)
+        public async Task<PlacedOrder> PlaceMarketSellAsync(Exchange exchange, decimal price, decimal quantity, PositionSide side, string ticker)
         {
             switch (exchange)
             {

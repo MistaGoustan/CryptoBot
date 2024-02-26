@@ -2,6 +2,6 @@
 {
     public interface IBalanceChecker
     {
-        Task<Boolean> HasEnoughInAccountAsync(String baseAsset, Exchange exchange, Boolean isWeighted, DynamicOrder[] uncahcedOrders);
+        Task<bool> HasEnoughInAccountAsync(string baseAsset, Exchange exchange, bool isWeighted, DynamicOrder[] uncahcedOrders);
     }
 }

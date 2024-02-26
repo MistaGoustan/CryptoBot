@@ -2,7 +2,7 @@
 {
     public class DynamicOrderCache : IDynamicOrderCache
     {
-        private Dictionary<String, DynamicOrder[]> OrderGroups = new();
+        private Dictionary<string, DynamicOrder[]> OrderGroups = new();
 
         public void AddGroup(DynamicOrder[] orders)
         {
@@ -19,7 +19,7 @@
             }
         }
 
-        public DynamicOrder[] GetGroup(String ticker) =>
+        public DynamicOrder[] GetGroup(string ticker) =>
             OrderGroups[ticker];
 
         public List<DynamicOrder[]>? GetAllGroups()
@@ -34,10 +34,10 @@
             return orders.Any() ? orders : null;
         }
 
-        public DynamicOrder[]? GetGroupOrDefault(String ticker) =>
+        public DynamicOrder[]? GetGroupOrDefault(string ticker) =>
             OrderGroups.GetValueOrDefault(ticker);
 
-        public void RemoveGroup(String ticker) =>
+        public void RemoveGroup(string ticker) =>
             OrderGroups.Remove(ticker);
     }
 }

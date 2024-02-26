@@ -2,6 +2,6 @@
 {
     public class UrlOptions
     {
-        public String Database { get; set; } = default!;
+        public string Database { get; set; } = default!;
     }
 }

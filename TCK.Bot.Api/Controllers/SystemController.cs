@@ -22,7 +22,7 @@ namespace TCK.Bot.Api.Controllers
 
         [HttpGet()]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public String Index()
+        public string Index()
         {
             var remoteIp = HttpContext.Connection.RemoteIpAddress;
 
@@ -31,14 +31,14 @@ namespace TCK.Bot.Api.Controllers
 
         [HttpGet("/health-check")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public String HealthCheck()
+        public string HealthCheck()
         {
             return "Health check successful.";
         }
 
         [HttpGet("/ping")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public String Ping()
+        public string Ping()
         {
             return "PONG";
         }
@@ -46,13 +46,13 @@ namespace TCK.Bot.Api.Controllers
         // Azures way of checking if the container is up and running
         [HttpGet("/robots933456.txt")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public String GetRobots()
+        public string GetRobots()
         {
             return "System up and running";
         }
 
         [HttpPost("sign-in", Name = "SignIn")]
-        [ProducesResponseType(typeof(String), StatusCodes.Status200OK, "application/json")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK, "application/json")]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest, "application/json")]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError, "application/json")]
         public Task<IActionResult> Run(SignInRequest request) => SignInAsync(request);
@@ -86,7 +86,7 @@ namespace TCK.Bot.Api.Controllers
 
                 return new OkObjectResult(jwtToken);
             }
-            return new StatusCodeResult((Int32)HttpStatusCode.Unauthorized);
+            return new StatusCodeResult((int)HttpStatusCode.Unauthorized);
         }
     }
 }

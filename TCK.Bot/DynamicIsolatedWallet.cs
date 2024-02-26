@@ -2,8 +2,8 @@
 {
     public sealed class DynamicIsolatedWallet
     {
-        public Decimal AvailableBalance { get; set; }
-        public Decimal Balance { get; set; }
-        public String Ticker { get; set; } = default!;
+        public decimal AvailableBalance { get; set; }
+        public decimal Balance { get; set; }
+        public string Ticker { get; set; } = default!;
     }
 }

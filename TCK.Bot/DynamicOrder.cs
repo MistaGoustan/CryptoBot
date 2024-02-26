@@ -3,25 +3,25 @@
     public sealed class DynamicOrder
     {
         public DateTime BuyDate { get; set; }
-        public Decimal BuyFee { get; set; }
-        public String BuyOrderId { get; set; } = default!;
-        public Decimal BuyPrice { get; set; }
+        public decimal BuyFee { get; set; }
+        public string BuyOrderId { get; set; } = default!;
+        public decimal BuyPrice { get; set; }
         public Exchange Exchange { get; set; }
-        public Decimal FundingFee { get; set; }
-        public Int64 Id { get; set; }
-        public String OrderGroupId { get; set; } = default!;
-        public Decimal PNL { get; set; }
+        public decimal FundingFee { get; set; }
+        public int Id { get; set; }
+        public string OrderGroupId { get; set; } = default!;
+        public decimal PNL { get; set; }
         public PositionSide PositionSide { get; set; }
-        public Decimal QuantityFilled { get; set; }
-        public Decimal QuantityQuoted { get; set; }
+        public decimal QuantityFilled { get; set; }
+        public decimal QuantityQuoted { get; set; }
         public DateTime? SellDate { get; set; }
-        public Decimal SellFee { get; set; }
-        public String SellOrderId { get; set; } = default!;
-        public Decimal SellPrice { get; set; }
+        public decimal SellFee { get; set; }
+        public string SellOrderId { get; set; } = default!;
+        public decimal SellPrice { get; set; }
         public DynamicOrderStatus Status { get; set; }
-        public Decimal StopPrice { get; set; }
-        public Decimal TargetPrice { get; set; }
-        public Decimal TargetQuantity { get; set; }
-        public String Ticker { get; set; } = default!;
+        public decimal StopPrice { get; set; }
+        public decimal TargetPrice { get; set; }
+        public decimal TargetQuantity { get; set; }
+        public string Ticker { get; set; } = default!;
     }
 }

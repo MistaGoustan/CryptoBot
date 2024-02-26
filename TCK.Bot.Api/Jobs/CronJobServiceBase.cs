@@ -75,13 +75,13 @@ namespace TCK.Bot.Api.Jobs
 
     public interface IScheduleConfig<T>
     {
-        String CronExpression { get; set; }
+        string CronExpression { get; set; }
         TimeZoneInfo TimeZoneInfo { get; set; }
     }
 
     public class ScheduleConfig<T> : IScheduleConfig<T>
     {
-        public String CronExpression { get; set; } = default!;
+        public string CronExpression { get; set; } = default!;
         public TimeZoneInfo TimeZoneInfo { get; set; } = default!;
     }
 }

@@ -6,7 +6,7 @@ namespace TCK.Bot.Services
     internal class MockBalanceChecker : IBalanceChecker
     {
         private readonly IBalanceChecker _innerChecker;
-        private readonly Boolean _checkBalance;
+        private readonly bool _checkBalance;
 
         public MockBalanceChecker(IBalanceChecker innerChecker, IOptions<BinanceOptions> config)
         {
@@ -14,7 +14,7 @@ namespace TCK.Bot.Services
             _checkBalance = config.Value.CheckBalance;
         }
 
-        public async Task<Boolean> HasEnoughInAccountAsync(String baseAsset, Exchange exchange, Boolean isWeighted, DynamicOrder[] uncahcedOrders)
+        public async Task<bool> HasEnoughInAccountAsync(string baseAsset, Exchange exchange, bool isWeighted, DynamicOrder[] uncahcedOrders)
         {
             if (exchange is Exchange.Binance && _checkBalance is false)
             {

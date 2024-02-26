@@ -17,11 +17,11 @@ namespace TCK.Bot.SignalService.Test.UnitTests
         [InlineData(1.11, 1, 0.01, 0.1, 1)]
         [InlineData(1.19, 1, 0.01, 0.1, 1)]
         [InlineData(1, 1, 0.01, 0.1, 1)]
-        public async void SignalBuySizeShouldReturnExpectedResultWhenAboveMinQuantity(Decimal balance,
-                                                                                Decimal price,
-                                                                                Decimal riskPercent,
-                                                                                Decimal stopPercent,
-                                                                                Decimal expectedResult)
+        public async void SignalBuySizeShouldReturnExpectedResultWhenAboveMinQuantity(decimal balance,
+                                                                                decimal price,
+                                                                                decimal riskPercent,
+                                                                                decimal stopPercent,
+                                                                                decimal expectedResult)
         {
             // ARRANGE
             var lotSize = new SymbolLotSizeFilter()
@@ -32,7 +32,7 @@ namespace TCK.Bot.SignalService.Test.UnitTests
             };
 
             var spotMarket = new Mock<IMarketConnection>();
-            spotMarket.Setup(m => m.GetAvgPriceAsync(It.IsAny<Exchange>(), It.IsAny<String>())).Returns(Task.Run(() => price));
+            spotMarket.Setup(m => m.GetAvgPriceAsync(It.IsAny<Exchange>(), It.IsAny<string>())).Returns(Task.Run(() => price));
             spotMarket.Setup(m => m.GetBalanceAsync(It.IsAny<Exchange>(), "USDT")).Returns(Task.Run(() => balance));
             spotMarket.Setup(m => m.GetLotSizeAsync(It.IsAny<Exchange>(), "ETHUSDT")).Returns(Task.Run(() => lotSize));
 
@@ -55,7 +55,7 @@ namespace TCK.Bot.SignalService.Test.UnitTests
         [InlineData(1.54, 1.5)]
         [InlineData(100, 100)]
         [InlineData(101, 100)]
-        public async void SignalSellSizeShouldReturnExpectedResult(Decimal balance, Decimal expectedResult)
+        public async void SignalSellSizeShouldReturnExpectedResult(decimal balance, decimal expectedResult)
         {
             // ARRANGE
             var lotSize = new SymbolLotSizeFilter()

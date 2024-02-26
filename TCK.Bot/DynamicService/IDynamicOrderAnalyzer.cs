@@ -2,6 +2,6 @@
 {
     public interface IDynamicOrderAnalyzer
     {
-        Task ForPriceAsync(Decimal lastPrice, DynamicOrder[] orders);
+        Task ForPriceAsync(decimal lastPrice, DynamicOrder[] orders);
     }
 }

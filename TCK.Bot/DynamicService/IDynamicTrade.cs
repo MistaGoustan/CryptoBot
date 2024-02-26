@@ -7,6 +7,6 @@ namespace TCK.Bot.DynamicService
         Task<DynamicOrder[]?> CancelTradesAsync(CancelDynamicTradeRequest request);
         Task<DynamicOrder[]?> EditTradesAsync(EditDynamicTradeRequest request);
         Task<DynamicOrder[]> ExecuteTradesAsync(DynamicTradeRequest request);
-        Task<IEnumerable<Object>?> GetTradesAsync(Exchange exchange, Boolean isDetailedTrades, String? ticker);
+        Task<IEnumerable<Object>?> GetTradesAsync(Exchange exchange, bool isDetailedTrades, string? ticker);
     }
 }

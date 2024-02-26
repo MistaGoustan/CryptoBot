@@ -23,7 +23,7 @@ namespace TCK.Bot.DynamicService
 
         public async Task<DynamicOrder[]> ForAsync(Exchange exchange, DynamicOrder[] orders)
         {
-            for (Int16 i = 0; i < orders.Length; i++)
+            for (short i = 0; i < orders.Length; i++)
             {
                 if (orders[i].Status is DynamicOrderStatus.Pending)
                 {

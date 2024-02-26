@@ -2,6 +2,6 @@
 {
     public interface ISignalPNLCalculator
     {
-        Decimal ForOrder(SignalOrder order);
+        decimal ForOrder(SignalOrder order);
     }
 }

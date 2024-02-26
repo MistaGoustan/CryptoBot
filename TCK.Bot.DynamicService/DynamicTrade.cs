@@ -100,9 +100,9 @@ namespace TCK.Bot.DynamicService
             return orders;
         }
 
-        public async Task<IEnumerable<Object>?> GetTradesAsync(Exchange exchange, Boolean isDetailedTrades, String? ticker)
+        public async Task<IEnumerable<Object>?> GetTradesAsync(Exchange exchange, bool isDetailedTrades, string? ticker)
         {
-            var orders = String.IsNullOrWhiteSpace(ticker) ?
+            var orders = string.IsNullOrWhiteSpace(ticker) ?
                     await _orderRepository.GetActiveGroupedOrdersAsync(exchange) :
                     await _orderRepository.GetRecentOrdersByTickerAsync(exchange, ticker);
 
@@ -134,7 +134,7 @@ namespace TCK.Bot.DynamicService
             return trades;
         }
 
-        private Decimal FormatDecimal(Decimal num) =>
+        private decimal FormatDecimal(decimal num) =>
             num < 1 ? Math.Round(num, 8) : Math.Round(num, 3);
     }
 }

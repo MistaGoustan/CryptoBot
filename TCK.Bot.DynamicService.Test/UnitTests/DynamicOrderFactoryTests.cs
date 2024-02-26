@@ -14,12 +14,12 @@ namespace TCK.Bot.DynamicService.Test.UnitTests
         {
             var retriever = new Mock<ILotSizeRetriever>();
             retriever
-                .Setup(r => r.ForSymbolAsync(It.IsAny<Exchange>(), It.IsAny<String>()).Result)
+                .Setup(r => r.ForSymbolAsync(It.IsAny<Exchange>(), It.IsAny<string>()).Result)
                 .Returns(new SymbolLotSizeFilter { MaxQuantity = 500, MinQuantity = 1, StepSize = 1 });
 
             var sizer = new Mock<IDynamicPositionSizer>();
             sizer
-                .Setup(s => s.GetDynamicBuySizeAsync(It.IsAny<Decimal>(), It.IsAny<Decimal>(), It.IsAny<Exchange>(), It.IsAny<Decimal>(), It.IsAny<String>()).Result)
+                .Setup(s => s.GetDynamicBuySizeAsync(It.IsAny<decimal>(), It.IsAny<decimal>(), It.IsAny<Exchange>(), It.IsAny<decimal>(), It.IsAny<string>()).Result)
                 .Returns(1000);
 
             _subject = new DynamicOrderFactory(retriever.Object, sizer.Object);

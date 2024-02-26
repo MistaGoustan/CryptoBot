@@ -20,7 +20,7 @@ namespace TCK.Common.WebJobs.ErrorHandling
             return data;
         }
 
-        private static String FormatTitle(Exception ex)
+        private static string FormatTitle(Exception ex)
         {
             if (ex.InnerException is null)
                 return ex.Message;
@@ -28,19 +28,19 @@ namespace TCK.Common.WebJobs.ErrorHandling
             return $"{ex.Message} (InnerException: {ex.InnerException})";
         }
 
-        private static Int32 GetStatusCode(Exception ex)
+        private static int GetStatusCode(Exception ex)
         {
             if (ex is BadRequestException)
             {
-                return (Int32)HttpStatusCode.BadRequest; // 400
+                return (int)HttpStatusCode.BadRequest; // 400
             }
 
             //if (ex is SecurityTokenException)
             //{
-            //    return (Int32)HttpStatusCode.Unauthorized; // 401
+            //    return (int)HttpStatusCode.Unauthorized; // 401
             //}
 
-            return (Int32)HttpStatusCode.InternalServerError; // 500
+            return (int)HttpStatusCode.InternalServerError; // 500
         }
     }
 }

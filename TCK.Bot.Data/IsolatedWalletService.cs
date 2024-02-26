@@ -17,12 +17,12 @@ namespace TCK.Bot.Data
             _signalRepo = signalWallet;
         }
 
-        public async Task<Decimal> GetDynamicWalletBalanceAsync(Exchange exchange, String ticker)
+        public async Task<decimal> GetDynamicWalletBalanceAsync(Exchange exchange, string ticker)
         {
             return (await _dynamicRepo.GetWalletAsync(exchange, ticker)).Balance;
         }
 
-        public async Task<Decimal> GetSignalWalletBalanceAsync(Exchange exchange, String ticker)
+        public async Task<decimal> GetSignalWalletBalanceAsync(Exchange exchange, string ticker)
         {
             return await _signalRepo.GetBalanceAsync(exchange, ticker);
         }
@@ -48,7 +48,7 @@ namespace TCK.Bot.Data
             await _signalRepo.UpdateBalanceAsync(order.Ticker, newBalance, price);
         }
 
-        private static Decimal CalculateNewBalance(Decimal currentBalance, Decimal fee, Decimal orderBaseSize, OrderSide orderSide)
+        private static decimal CalculateNewBalance(decimal currentBalance, decimal fee, decimal orderBaseSize, OrderSide orderSide)
         {
             return orderSide switch
             {

@@ -27,7 +27,7 @@ namespace TCK.Bot.SignalService
             _config = options.Value;
         }
 
-        public async Task<Decimal> GetSignalBuySizeAsync(Exchange exchange, Decimal stopPercent, String ticker)
+        public async Task<decimal> GetSignalBuySizeAsync(Exchange exchange, decimal stopPercent, string ticker)
         {
             if (_config.IsProduction)
             {
@@ -47,7 +47,7 @@ namespace TCK.Bot.SignalService
             return size.ToStepSize(lotSize);
         }
 
-        public async Task<Decimal> GetSignalSellSizeAsync(Exchange exchange, String ticker, String interval)
+        public async Task<decimal> GetSignalSellSizeAsync(Exchange exchange, string ticker, string interval)
         {
             if (_config.IsProduction)
             {
@@ -59,7 +59,7 @@ namespace TCK.Bot.SignalService
             return recentOrder.Quantity;
         }
 
-        private Decimal GetRiskSize(Decimal size) =>
+        private decimal GetRiskSize(decimal size) =>
             size * _config.SignalRiskPercent;
     }
 }

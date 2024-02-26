@@ -6,7 +6,7 @@ namespace TCK.Bot.DynamicService
 {
     internal class PendingOrderAnalyzer : IPendingOrderAnalyzer
     {
-        private readonly Boolean _isProduction;
+        private readonly bool _isProduction;
         private readonly ILogger<PendingOrderAnalyzer> _logger;
         private readonly IDynamicOrderService _orderService;
 
@@ -19,7 +19,7 @@ namespace TCK.Bot.DynamicService
             _orderService = orderService;
         }
 
-        public async Task<Boolean> ForPriceWithTickerAsync(Decimal lastPrice, DynamicOrder order)
+        public async Task<bool> ForPriceWithTickerAsync(decimal lastPrice, DynamicOrder order)
         {
             if (HasHitBuyPrice(lastPrice, order.PositionSide, order.BuyPrice))
             {
@@ -42,7 +42,7 @@ namespace TCK.Bot.DynamicService
             return false;
         }
 
-        private Boolean HasHitBuyPrice(Decimal lastPrice, PositionSide side, Decimal buyPrice) =>
+        private bool HasHitBuyPrice(decimal lastPrice, PositionSide side, decimal buyPrice) =>
             side is PositionSide.Long ? lastPrice <= buyPrice : lastPrice >= buyPrice;
     }
 }

@@ -11,14 +11,14 @@ namespace TCK.Bot.Services
             _cache = cache;
         }
 
-        public SignalOrder GetSignalOrder(Exchange exchange, String ticker)
+        public SignalOrder GetSignalOrder(Exchange exchange, string ticker)
         {
             var key = $"SignalOrders-{exchange}-{ticker}";
 
             return _cache.Get<SignalOrder>(key);
         }
 
-        public void RemoveSignalOrder(Exchange exchange, String ticker)
+        public void RemoveSignalOrder(Exchange exchange, string ticker)
         {
             var key = $"SignalOrders-{exchange}-{ticker}";
 

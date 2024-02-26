@@ -52,7 +52,7 @@ namespace TCK.Bot.Api.Controllers
         [ProducesResponseType(typeof(DynamicOrder[]), StatusCodes.Status200OK, "application/json")]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest, "application/json")]
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError, "application/json")]
-        public Task<IActionResult> Run(Exchange exchange, Boolean isDetailedTrades, String? ticker) =>
+        public Task<IActionResult> Run(Exchange exchange, bool isDetailedTrades, string? ticker) =>
             ErrorHandlerAsync(() => GetDynamicTradesAsync(exchange, isDetailedTrades, ticker));
 
         //[Authorize]
@@ -85,7 +85,7 @@ namespace TCK.Bot.Api.Controllers
                 Ok($"Trades already exist for {request.Ticker} on {request.Exchange}");
         }
 
-        private async Task<IActionResult> GetDynamicTradesAsync(Exchange exchange, Boolean isDetailedTrades, String? ticker)
+        private async Task<IActionResult> GetDynamicTradesAsync(Exchange exchange, bool isDetailedTrades, string? ticker)
         {
             var trades = await _tradeService.GetTradesAsync(exchange, isDetailedTrades, ticker);
 

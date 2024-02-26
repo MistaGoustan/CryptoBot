@@ -7,10 +7,10 @@ namespace TCK.Bot.Api
     {
         [DefaultValue("TEST1234")]
         [Required(ErrorMessage = $"{nameof(Password)} is required")]
-        public String Password { get; set; } = default!;
+        public string Password { get; set; } = default!;
 
         [DefaultValue("admin")]
         [Required(ErrorMessage = $"{nameof(Username)} is required")]
-        public String Username { get; set; } = default!;
+        public string Username { get; set; } = default!;
     }
 }

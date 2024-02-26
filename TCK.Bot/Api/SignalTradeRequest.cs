@@ -9,7 +9,7 @@ namespace TCK.Bot.Api
 
         [DefaultValue("15")]
         [Required(ErrorMessage = "Interval is required")]
-        public String Interval { get; set; } = default!;
+        public string Interval { get; set; } = default!;
 
         public OrderSide OrderSide { get; set; }
 
@@ -17,10 +17,10 @@ namespace TCK.Bot.Api
 
         [DefaultValue(0.1)]
         [Range(0, 1, ErrorMessage = $"{nameof(StopPercent)} must be between 1 - 0")]
-        public Decimal StopPercent { get; set; }
+        public decimal StopPercent { get; set; }
 
         [DefaultValue("ETHUSDT")]
         [Required(ErrorMessage = "Ticker is required")]
-        public String Ticker { get; set; } = default!;
+        public string Ticker { get; set; } = default!;
     }
 }

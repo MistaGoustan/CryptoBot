@@ -2,8 +2,8 @@
 {
     public sealed class SymbolPercentPriceFilter
     {
-        public Int32 AveragePriceMinutes { get; set; }
-        public Decimal MultiplierDown { get; set; }
-        public Decimal MultiplierUp { get; set; }
+        public int AveragePriceMinutes { get; set; }
+        public decimal MultiplierDown { get; set; }
+        public decimal MultiplierUp { get; set; }
     }
 }

@@ -53,7 +53,7 @@
 //            return appFactory;
 //        }
 
-//        public HttpClient CreateClient(Boolean isAutherized)
+//        public HttpClient CreateClient(bool isAutherized)
 //        {
 //            var client = _application.CreateClient();
 

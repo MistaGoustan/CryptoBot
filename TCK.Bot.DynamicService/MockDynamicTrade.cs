@@ -9,7 +9,7 @@ namespace TCK.Bot.DynamicService
     {
         private readonly IDynamicOrderCache _cache;
         private readonly IDynamicTrade _innerTrader;
-        private readonly Boolean _isProduction;
+        private readonly bool _isProduction;
         private readonly IDynamicPNLCalculator _pnl;
         private readonly IDynamicOrderUpdater _updater;
 
@@ -66,7 +66,7 @@ namespace TCK.Bot.DynamicService
             return orders;
         }
 
-        public async Task<IEnumerable<Object>?> GetTradesAsync(Exchange exchange, Boolean isDetailedTrades, String ticker)
+        public async Task<IEnumerable<Object>?> GetTradesAsync(Exchange exchange, bool isDetailedTrades, string ticker)
         {
             return await _innerTrader.GetTradesAsync(exchange, isDetailedTrades, ticker);
         }

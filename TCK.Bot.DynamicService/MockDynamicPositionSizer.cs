@@ -23,7 +23,7 @@ namespace TCK.Bot.DynamicService
             _config = options.Value;
         }
 
-        public async Task<Decimal> GetDynamicBuySizeAsync(Decimal accountbalance, Decimal averagePrice, Exchange exchange, Decimal stopPrice, String ticker)
+        public async Task<decimal> GetDynamicBuySizeAsync(decimal accountbalance, decimal averagePrice, Exchange exchange, decimal stopPrice, string ticker)
         {
             if (_config.IsProduction)
             {
@@ -47,10 +47,10 @@ namespace TCK.Bot.DynamicService
             return size.ToStepSize(lotSize);
         }
 
-        private Decimal GetRiskSize(Decimal size) =>
+        private decimal GetRiskSize(decimal size) =>
             size * _config.DynamicRiskPercent;
 
-        private Decimal GetStopPercent(Decimal averagePrice, Decimal stopPrice) =>
+        private decimal GetStopPercent(decimal averagePrice, decimal stopPrice) =>
             Math.Abs((averagePrice - stopPrice) / averagePrice);
     }
 }

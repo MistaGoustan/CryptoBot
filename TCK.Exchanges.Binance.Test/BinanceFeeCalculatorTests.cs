@@ -137,7 +137,7 @@ namespace TCK.Exchanges.Binance.Test
             result.ShouldBe(1.4m);
         }
 
-        private static List<BinanceOrderTrade> CreateTrades(String asset, Decimal fee, Decimal price)
+        private static List<BinanceOrderTrade> CreateTrades(string asset, decimal fee, decimal price)
             => new()
             {
                 new BinanceOrderTrade

@@ -12,7 +12,7 @@ namespace TCK.Bot.Api.Extensions
 
             if (!isValid)
             {
-                throw new BadRequestException($"{o.GetType().Name} is invalid: {String.Join(", ", validationResults.Select(s => s.ErrorMessage))}");
+                throw new BadRequestException($"{o.GetType().Name} is invalid: {string.Join(", ", validationResults.Select(s => s.ErrorMessage))}");
             }
         }
     }

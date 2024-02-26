@@ -2,15 +2,15 @@
 {
     public interface IMarketConnection
     {
-        Task<Decimal> GetAvailableBalanceAsync(Exchange exchange, String tickerHalf);
-        Task<Decimal> GetBalanceAsync(Exchange exchange, String tickerHalf);
-        Task<Decimal> GetAvgPriceAsync(Exchange exchange, String ticker);
-        Task<Int32> GetBaseAssetPrecisionAsync(Exchange exchange, String ticker);
-        Task<SymbolLotSizeFilter> GetLotSizeAsync(Exchange exchange, String tickerLeft);
-        Task<SymbolPriceFilter> GetPriceFilterAsync(Exchange exchange, String ticker);
-        Task<SymbolPercentPriceFilter> GetPricePercentFilterAsync(Exchange exchange, String ticker);
-        Task<Decimal> GetTotalFundingFeeAsync(Exchange exchange, DateTime startTime, String ticker);
-        Task<Trade[]> GetTradesAsync(Exchange exchange, String ticker);
-        Task<Boolean> TickerPairExistsAsync(Exchange exchange, String ticker);
+        Task<decimal> GetAvailableBalanceAsync(Exchange exchange, string tickerHalf);
+        Task<decimal> GetBalanceAsync(Exchange exchange, string tickerHalf);
+        Task<decimal> GetAvgPriceAsync(Exchange exchange, string ticker);
+        Task<int> GetBaseAssetPrecisionAsync(Exchange exchange, string ticker);
+        Task<SymbolLotSizeFilter> GetLotSizeAsync(Exchange exchange, string tickerLeft);
+        Task<SymbolPriceFilter> GetPriceFilterAsync(Exchange exchange, string ticker);
+        Task<SymbolPercentPriceFilter> GetPricePercentFilterAsync(Exchange exchange, string ticker);
+        Task<decimal> GetTotalFundingFeeAsync(Exchange exchange, DateTime startTime, string ticker);
+        Task<Trade[]> GetTradesAsync(Exchange exchange, string ticker);
+        Task<bool> TickerPairExistsAsync(Exchange exchange, string ticker);
     }
 }

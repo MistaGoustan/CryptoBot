@@ -9,7 +9,7 @@ namespace TCK.Exchanges.Binance
     public class CacheBinanceSpotMarketConnection : IBinanceSpotMarketConnection
     {
         private readonly IMemoryCache _cache;
-        private readonly Int16 _expireTimeInSeconds;
+        private readonly short _expireTimeInSeconds;
         private readonly IBinanceSpotMarketConnection _innerSpotMarket;
 
         public CacheBinanceSpotMarketConnection(IMemoryCache cache, IBinanceSpotMarketConnection innerSpotMarket, IOptions<ConfigurationOptions> options)
@@ -19,15 +19,15 @@ namespace TCK.Exchanges.Binance
             _expireTimeInSeconds = options.Value.ExpireTimeInSeconds;
         }
 
-        public async Task<Decimal> GetAvailableBalanceAsync(String tickerHalf)
+        public async Task<decimal> GetAvailableBalanceAsync(string tickerHalf)
         {
             return await _innerSpotMarket.GetAvailableBalanceAsync(tickerHalf);
         }
 
-        public async Task<Decimal> GetAvgPriceAsync(String ticker)
+        public async Task<decimal> GetAvgPriceAsync(string ticker)
         {
             var key = $"Binance-{nameof(GetAvgPriceAsync)}-{ticker}";
-            var balance = _cache.Get<Decimal>(key);
+            var balance = _cache.Get<decimal>(key);
 
             if (balance is 0)
             {
@@ -39,10 +39,10 @@ namespace TCK.Exchanges.Binance
             return balance;
         }
 
-        public async Task<Int32> GetBaseAssetPrecisionAsync(String ticker)
+        public async Task<int> GetBaseAssetPrecisionAsync(string ticker)
         {
             var key = $"Binance-{nameof(GetBaseAssetPrecisionAsync)}-{ticker}";
-            var precision = _cache.Get<Int32>(key);
+            var precision = _cache.Get<int>(key);
 
             if (precision is 0)
             {
@@ -54,7 +54,7 @@ namespace TCK.Exchanges.Binance
             return precision;
         }
 
-        public async Task<SymbolLotSizeFilter> GetLotSizeAsync(String tickerLeft)
+        public async Task<SymbolLotSizeFilter> GetLotSizeAsync(string tickerLeft)
         {
             var key = $"Binance-{nameof(GetLotSizeAsync)}-{tickerLeft}";
             var lotSizeFilter = _cache.Get<SymbolLotSizeFilter>(key);
@@ -69,7 +69,7 @@ namespace TCK.Exchanges.Binance
             return lotSizeFilter;
         }
 
-        public async Task<SymbolPriceFilter> GetPriceFilterAsync(String ticker)
+        public async Task<SymbolPriceFilter> GetPriceFilterAsync(string ticker)
         {
             var key = $"Binance-{nameof(GetPriceFilterAsync)}-{ticker}";
             var priceFilter = _cache.Get<SymbolPriceFilter>(key);
@@ -84,7 +84,7 @@ namespace TCK.Exchanges.Binance
             return priceFilter;
         }
 
-        public async Task<SymbolPercentPriceFilter> GetPricePercentFilterAsync(String ticker)
+        public async Task<SymbolPercentPriceFilter> GetPricePercentFilterAsync(string ticker)
         {
             var key = $"Binance-{nameof(GetPricePercentFilterAsync)}-{ticker}";
             var pricePercentFilter = _cache.Get<SymbolPercentPriceFilter>(key);
@@ -99,10 +99,10 @@ namespace TCK.Exchanges.Binance
             return pricePercentFilter;
         }
 
-        public async Task<Boolean> TickerPairExistsAsync(String ticker)
+        public async Task<bool> TickerPairExistsAsync(string ticker)
         {
             var key = $"Binance-{nameof(TickerPairExistsAsync)}-{ticker}";
-            var isExisting = _cache.Get<Boolean>(key);
+            var isExisting = _cache.Get<bool>(key);
 
             if (isExisting is false)
             {

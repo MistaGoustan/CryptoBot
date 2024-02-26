@@ -7,6 +7,6 @@ namespace TCK.Bot.Api
         public Exchange Exchange { get; set; } = default!;
 
         [Required(ErrorMessage = "Ticker(s) is required")]
-        public List<String> Tickers { get; set; } = default!;
+        public List<string> Tickers { get; set; } = default!;
     }
 }

@@ -2,8 +2,8 @@
 {
     public sealed class SymbolLotSizeFilter
     {
-        public Decimal MaxQuantity { get; set; }
-        public Decimal MinQuantity { get; set; }
-        public Decimal StepSize { get; set; }
+        public decimal MaxQuantity { get; set; }
+        public decimal MinQuantity { get; set; }
+        public decimal StepSize { get; set; }
     }
 }

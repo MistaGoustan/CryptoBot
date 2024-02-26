@@ -7,7 +7,7 @@ namespace TCK.Bot.SignalService
 {
     public class SignalPositionSizer : ISignalPositionSizer
     {
-        private readonly Decimal _riskPercent;
+        private readonly decimal _riskPercent;
         private readonly IMarketConnection _market;
 
         public SignalPositionSizer(IOptions<ConfigurationOptions> options, IMarketConnection market)
@@ -16,7 +16,7 @@ namespace TCK.Bot.SignalService
             _market = market;
         }
 
-        public async Task<Decimal> GetSignalBuySizeAsync(Exchange exchange, Decimal stopPercent, String ticker)
+        public async Task<decimal> GetSignalBuySizeAsync(Exchange exchange, decimal stopPercent, string ticker)
         {
             var accountSize = await _market.GetBalanceAsync(exchange, ticker.ToTickerRight());
 
@@ -31,7 +31,7 @@ namespace TCK.Bot.SignalService
             return size.ToStepSize(lotSize);
         }
 
-        public async Task<Decimal> GetSignalSellSizeAsync(Exchange exchange, String ticker, String interval)
+        public async Task<decimal> GetSignalSellSizeAsync(Exchange exchange, string ticker, string interval)
         {
             var balance = await _market.GetBalanceAsync(exchange, ticker.ToTickerLeft());
             var lotSize = await _market.GetLotSizeAsync(exchange, ticker);
@@ -39,7 +39,7 @@ namespace TCK.Bot.SignalService
             return balance.ToStepSize(lotSize);
         }
 
-        private Decimal GetRiskSize(Decimal size) =>
+        private decimal GetRiskSize(decimal size) =>
             size * _riskPercent;
     }
 }

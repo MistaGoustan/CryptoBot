@@ -2,12 +2,12 @@
 {
     public interface IFuturesMarketConnection
     {
-        Task<Decimal> GetAvailableBalanceAsync(String tickerHalf);
-        Task<Decimal> GetAvgPriceAsync(String ticker);
-        Task<Int32> GetBaseAssetPrecisionAsync(String ticker);
-        Task<SymbolLotSizeFilter> GetLotSizeAsync(String tickerLeft);
-        Task<SymbolPriceFilter> GetPriceFilterAsync(String ticker);
-        Task<SymbolPercentPriceFilter> GetPricePercentFilterAsync(String ticker);
-        Task<Boolean> TickerPairExistsAsync(String ticker);
+        Task<decimal> GetAvailableBalanceAsync(string tickerHalf);
+        Task<decimal> GetAvgPriceAsync(string ticker);
+        Task<int> GetBaseAssetPrecisionAsync(string ticker);
+        Task<SymbolLotSizeFilter> GetLotSizeAsync(string tickerLeft);
+        Task<SymbolPriceFilter> GetPriceFilterAsync(string ticker);
+        Task<SymbolPercentPriceFilter> GetPricePercentFilterAsync(string ticker);
+        Task<bool> TickerPairExistsAsync(string ticker);
     }
 }

@@ -7,7 +7,7 @@ namespace TCK.Bot.DynamicService
 {
     public class DynamicOrderAnalyzer : IDynamicOrderAnalyzer
     {
-        private readonly Decimal _moveUpStopPricePercent;
+        private readonly decimal _moveUpStopPricePercent;
         private readonly IInProgressOrderAnalyzer _inProgressOrderAnalyzer;
         private readonly ILogger<DynamicOrderAnalyzer> _logger;
         private readonly IDynamicOrderUpdater _orderUpdater;
@@ -29,7 +29,7 @@ namespace TCK.Bot.DynamicService
             _pnl = pnl;
         }
 
-        public async Task ForPriceAsync(Decimal lastPrice, DynamicOrder[] orders)
+        public async Task ForPriceAsync(decimal lastPrice, DynamicOrder[] orders)
         {
             var hasPendingUpdate = false;
             var hasInProgressUpdate = false;
@@ -86,7 +86,7 @@ namespace TCK.Bot.DynamicService
             }
         }
 
-        private Decimal GetAveragedQuantityFilled(DynamicOrder[] orders)
+        private decimal GetAveragedQuantityFilled(DynamicOrder[] orders)
         {
             var inProgressOrders = orders.Where(o => o.Status is DynamicOrderStatus.InProgress);
             var totalQty = inProgressOrders.Sum(o => o.QuantityFilled);
@@ -101,7 +101,7 @@ namespace TCK.Bot.DynamicService
                 return;
             }
 
-            Decimal amountCompleted = orders.Where(o => o.Status is DynamicOrderStatus.Completed).Count();
+            decimal amountCompleted = orders.Where(o => o.Status is DynamicOrderStatus.Completed).Count();
             var percentOfCompletedOrders = amountCompleted / orders.Length;
 
             if (percentOfCompletedOrders >= _moveUpStopPricePercent)

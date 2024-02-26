@@ -2,6 +2,6 @@
 {
     public interface ISignalOrderAnalyzer
     {
-        public Task ForPriceWithTickerAsync(Exchange exchange, Decimal lastPrice, String ticker);
+        public Task ForPriceWithTickerAsync(Exchange exchange, decimal lastPrice, string ticker);
     }
 }

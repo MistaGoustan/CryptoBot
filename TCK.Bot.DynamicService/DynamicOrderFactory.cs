@@ -51,11 +51,11 @@ namespace TCK.Bot.DynamicService
             return orders;
         }
 
-        private Decimal GetEqualAveragedEntry(DynamicOrder[] orders)
+        private decimal GetEqualAveragedEntry(DynamicOrder[] orders)
         {
             var averagedEntry = orders[0].BuyPrice;
 
-            for (Int16 i = 0; i <= orders.Length - 1; i++)
+            for (short i = 0; i <= orders.Length - 1; i++)
             {
                 if (i is 0)
                 {
@@ -71,12 +71,12 @@ namespace TCK.Bot.DynamicService
             return averagedEntry;
         }
 
-        private (Decimal AveragedEntry, Decimal Modifier) GetWeightedAvgPriceWithMod(DynamicOrder[] orders)
+        private (decimal AveragedEntry, decimal Modifier) GetWeightedAvgPriceWithMod(DynamicOrder[] orders)
         {
             var averagedEntry = orders[0].BuyPrice;
             var modifier = 1m;
 
-            for (Int16 i = 0; i <= orders.Length - 1; i++)
+            for (short i = 0; i <= orders.Length - 1; i++)
             {
                 if (i is 0)
                 {
@@ -93,21 +93,21 @@ namespace TCK.Bot.DynamicService
             return (averagedEntry, modifier);
         }
 
-        private DynamicOrder[] SetBuyPricesWithinRange(Decimal lowerBound, DynamicOrder[] orders, PositionSide side, Decimal upperBound)
+        private DynamicOrder[] SetBuyPricesWithinRange(decimal lowerBound, DynamicOrder[] orders, PositionSide side, decimal upperBound)
         {
             if (side is PositionSide.Long)
             {
-                for (Decimal i = 1; i <= orders.Length; i++)
+                for (decimal i = 1; i <= orders.Length; i++)
                 {
                     var modifier = i / orders.Length;
                     var price = (upperBound - lowerBound) * modifier + lowerBound;
 
-                    orders[(Int16)i - 1].BuyPrice = Decimal.Round(price, 8);
+                    orders[(short)i - 1].BuyPrice = decimal.Round(price, 8);
                 }
             }
             else
             {
-                for (Decimal i = 0; i <= orders.Length - 1; i++)
+                for (decimal i = 0; i <= orders.Length - 1; i++)
                 {
                     var modifier = i / orders.Length;
 
@@ -115,7 +115,7 @@ namespace TCK.Bot.DynamicService
                         lowerBound :
                         (upperBound - lowerBound) * modifier + lowerBound;
 
-                    orders[(Int16)i].BuyPrice = Decimal.Round(price, 8);
+                    orders[(short)i].BuyPrice = decimal.Round(price, 8);
                 }
             }
 
@@ -125,7 +125,7 @@ namespace TCK.Bot.DynamicService
             return orders;
         }
 
-        private DynamicOrder[] SetEqualQuantities(DynamicOrder[] orders, SymbolLotSizeFilter filter, Decimal size)
+        private DynamicOrder[] SetEqualQuantities(DynamicOrder[] orders, SymbolLotSizeFilter filter, decimal size)
         {
             var individualQuantitiy = size / orders.Length;
             individualQuantitiy = individualQuantitiy.ToStepSize(filter);
@@ -138,36 +138,36 @@ namespace TCK.Bot.DynamicService
             return orders;
         }
 
-        private DynamicOrder[] SetTargetPricesWithinRange(Decimal lowerBound, DynamicOrder[] orders, PositionSide side, Decimal upperBound)
+        private DynamicOrder[] SetTargetPricesWithinRange(decimal lowerBound, DynamicOrder[] orders, PositionSide side, decimal upperBound)
         {
             if (side is PositionSide.Long)
             {
-                for (Decimal i = 0; i <= orders.Length - 1; i++)
+                for (decimal i = 0; i <= orders.Length - 1; i++)
                 {
                     var modifier = i == 0 ? 0 : i / orders.Length;
                     var price = (upperBound - lowerBound) * modifier + lowerBound;
 
-                    orders[(Int16)i].TargetPrice = price;
+                    orders[(short)i].TargetPrice = price;
                 }
             }
             else
             {
-                for (Decimal i = 1; i <= orders.Length; i++)
+                for (decimal i = 1; i <= orders.Length; i++)
                 {
                     var modifier = i / orders.Length;
 
                     var price = (upperBound - lowerBound) * modifier + lowerBound;
 
-                    orders[(Int16)i - 1].TargetPrice = Decimal.Round(price, 8);
+                    orders[(short)i - 1].TargetPrice = decimal.Round(price, 8);
                 }
             }
 
             return orders;
         }
 
-        private DynamicOrder[] SetWeightedQuantities(DynamicOrder[] orders, SymbolLotSizeFilter filter, Decimal modifier, Decimal size)
+        private DynamicOrder[] SetWeightedQuantities(DynamicOrder[] orders, SymbolLotSizeFilter filter, decimal modifier, decimal size)
         {
-            for (Int16 i = 0; i < orders.Length; i++)
+            for (short i = 0; i < orders.Length; i++)
             {
                 var position = i + 1;
                 var currentQty = position / modifier * size;
@@ -183,7 +183,7 @@ namespace TCK.Bot.DynamicService
             var orders = new DynamicOrder[request.NumberOfOrders];
             var orderGroupId = Guid.NewGuid().ToString();
 
-            for (Int16 i = 0; i < orders.Length; i++)
+            for (short i = 0; i < orders.Length; i++)
             {
                 orders[i] = new DynamicOrder
                 {

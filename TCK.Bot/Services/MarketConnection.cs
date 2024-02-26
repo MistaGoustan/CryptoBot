@@ -11,7 +11,7 @@ namespace TCK.Bot.Services
             _binance = binance;
         }
 
-        public Task<Decimal> GetAvailableBalanceAsync(Exchange exchange, String tickerHalf)
+        public Task<decimal> GetAvailableBalanceAsync(Exchange exchange, string tickerHalf)
         {
             switch (exchange)
             {
@@ -23,7 +23,7 @@ namespace TCK.Bot.Services
             }
         }
 
-        public Task<Decimal> GetBalanceAsync(Exchange exchange, String tickerHalf)
+        public Task<decimal> GetBalanceAsync(Exchange exchange, string tickerHalf)
         {
             switch (exchange)
             {
@@ -35,7 +35,7 @@ namespace TCK.Bot.Services
             }
         }
 
-        public Task<Decimal> GetAvgPriceAsync(Exchange exchange, String ticker)
+        public Task<decimal> GetAvgPriceAsync(Exchange exchange, string ticker)
         {
             switch (exchange)
             {
@@ -47,7 +47,7 @@ namespace TCK.Bot.Services
             }
         }
 
-        public Task<Int32> GetBaseAssetPrecisionAsync(Exchange exchange, String ticker)
+        public Task<int> GetBaseAssetPrecisionAsync(Exchange exchange, string ticker)
         {
             switch (exchange)
             {
@@ -59,7 +59,7 @@ namespace TCK.Bot.Services
             }
         }
 
-        public async Task<Decimal> GetTotalFundingFeeAsync(Exchange exchange, DateTime startTime, String ticker)
+        public async Task<decimal> GetTotalFundingFeeAsync(Exchange exchange, DateTime startTime, string ticker)
         {
             switch (exchange)
             {
@@ -71,7 +71,7 @@ namespace TCK.Bot.Services
             }
         }
 
-        public Task<SymbolLotSizeFilter> GetLotSizeAsync(Exchange exchange, String ticker)
+        public Task<SymbolLotSizeFilter> GetLotSizeAsync(Exchange exchange, string ticker)
         {
             switch (exchange)
             {
@@ -83,7 +83,7 @@ namespace TCK.Bot.Services
             }
         }
 
-        public Task<SymbolPriceFilter> GetPriceFilterAsync(Exchange exchange, String ticker)
+        public Task<SymbolPriceFilter> GetPriceFilterAsync(Exchange exchange, string ticker)
         {
             switch (exchange)
             {
@@ -95,7 +95,7 @@ namespace TCK.Bot.Services
             }
         }
 
-        public Task<SymbolPercentPriceFilter> GetPricePercentFilterAsync(Exchange exchange, String ticker)
+        public Task<SymbolPercentPriceFilter> GetPricePercentFilterAsync(Exchange exchange, string ticker)
         {
             switch (exchange)
             {
@@ -107,7 +107,7 @@ namespace TCK.Bot.Services
             }
         }
 
-        public async Task<Trade[]> GetTradesAsync(Exchange exchange, String ticker)
+        public async Task<Trade[]> GetTradesAsync(Exchange exchange, string ticker)
         {
             switch (exchange)
             {
@@ -119,7 +119,7 @@ namespace TCK.Bot.Services
             }
         }
 
-        public Task<Boolean> TickerPairExistsAsync(Exchange exchange, String ticker)
+        public Task<bool> TickerPairExistsAsync(Exchange exchange, string ticker)
         {
             switch (exchange)
             {

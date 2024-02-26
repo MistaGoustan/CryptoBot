@@ -204,18 +204,18 @@ namespace TCK.Bot.DynamicService.Test.UnitTests
             }
         }
 
-        private DynamicOrderAnalyzer CreateAnalyzer(Boolean hasInProgressUpdate, Boolean hasPendingUpdate, Decimal moveStopPricePercent)
+        private DynamicOrderAnalyzer CreateAnalyzer(bool hasInProgressUpdate, bool hasPendingUpdate, decimal moveStopPricePercent)
         {
             var config = new Mock<IOptions<ConfigurationOptions>>();
             config.Setup(c => c.Value.DynamicMoveUpStopPricePercent).Returns(moveStopPricePercent);
 
             var inProgressAnalyzer = new Mock<IInProgressOrderAnalyzer>();
-            inProgressAnalyzer.Setup(i => i.ForPriceWithTickerAsync(It.IsAny<Decimal>(), It.IsAny<DynamicOrder>()).Result).Returns(hasInProgressUpdate);
+            inProgressAnalyzer.Setup(i => i.ForPriceWithTickerAsync(It.IsAny<decimal>(), It.IsAny<DynamicOrder>()).Result).Returns(hasInProgressUpdate);
 
             var orderUpdater = new Mock<IDynamicOrderUpdater>();
 
             var pendingAnalyzer = new Mock<IPendingOrderAnalyzer>();
-            pendingAnalyzer.Setup(i => i.ForPriceWithTickerAsync(It.IsAny<Decimal>(), It.IsAny<DynamicOrder>()).Result).Returns(hasPendingUpdate);
+            pendingAnalyzer.Setup(i => i.ForPriceWithTickerAsync(It.IsAny<decimal>(), It.IsAny<DynamicOrder>()).Result).Returns(hasPendingUpdate);
 
             var pnl = new Mock<IDynamicPNLCalculator>();
 

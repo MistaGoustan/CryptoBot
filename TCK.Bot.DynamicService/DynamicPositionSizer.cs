@@ -7,7 +7,7 @@ namespace TCK.Bot.DynamicService
 {
     public class DynamicPositionSizer : IDynamicPositionSizer
     {
-        private readonly Decimal _riskPercent;
+        private readonly decimal _riskPercent;
         private readonly IMarketConnection _market;
 
         public DynamicPositionSizer(IOptions<ConfigurationOptions> options, IMarketConnection market)
@@ -16,7 +16,7 @@ namespace TCK.Bot.DynamicService
             _market = market;
         }
 
-        public async Task<Decimal> GetDynamicBuySizeAsync(Decimal accountBalance, Decimal averagePrice, Exchange exchange, Decimal stopPrice, String ticker)
+        public async Task<decimal> GetDynamicBuySizeAsync(decimal accountBalance, decimal averagePrice, Exchange exchange, decimal stopPrice, string ticker)
         {
             if (accountBalance is 0)
             {
@@ -36,10 +36,10 @@ namespace TCK.Bot.DynamicService
             return size.ToStepSize(lotSize);
         }
 
-        private Decimal GetRiskSize(Decimal size) =>
+        private decimal GetRiskSize(decimal size) =>
             size * _riskPercent;
 
-        private Decimal GetStopPercent(Decimal averagePrice, Decimal stopPrice) =>
+        private decimal GetStopPercent(decimal averagePrice, decimal stopPrice) =>
             Math.Abs(averagePrice - stopPrice) / averagePrice;
     }
 }

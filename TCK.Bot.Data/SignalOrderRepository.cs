@@ -9,7 +9,7 @@ namespace TCK.Bot.Data
 {
     internal class SignalOrderRepository : ISignalOrderRepository
     {
-        private readonly String _connectionString;
+        private readonly string _connectionString;
         private readonly ILogger<SignalOrderRepository> _logger;
         private readonly ISignalPNLCalculator _pnl;
 
@@ -41,7 +41,7 @@ namespace TCK.Bot.Data
                 PNL = 0,
                 PositionSide = Enum.GetName(order.PositionSide),
                 Quantity = order.Quantity,
-                SellDate = (String)null!,
+                SellDate = (string)null!,
                 SellFee = order.SellFee,
                 SellOrderId = order.SellOrderId,
                 SellPrice = order.SellPrice,
@@ -51,7 +51,7 @@ namespace TCK.Bot.Data
             });
         }
 
-        public async Task<SignalOrder?> GetInProgressOrderByIntervalAsync(Exchange exchange, String interval, String ticker)
+        public async Task<SignalOrder?> GetInProgressOrderByIntervalAsync(Exchange exchange, string interval, string ticker)
         {
             var db = new SqlConnection(_connectionString);
 
@@ -91,7 +91,7 @@ namespace TCK.Bot.Data
             return order;
         }
 
-        public async Task<IEnumerable<SignalOrder>> GetOrdersByIntervalAsync(String ticker, String interval)
+        public async Task<IEnumerable<SignalOrder>> GetOrdersByIntervalAsync(string ticker, string interval)
         {
             var db = new SqlConnection(_connectionString);
 
@@ -105,7 +105,7 @@ namespace TCK.Bot.Data
             return orders;
         }
 
-        public async Task<SignalOrder?> GetOrderByOrderIdAsync(Exchange exchange, String orderId)
+        public async Task<SignalOrder?> GetOrderByOrderIdAsync(Exchange exchange, string orderId)
         {
             var db = new SqlConnection(_connectionString);
 
@@ -125,7 +125,7 @@ namespace TCK.Bot.Data
             return order;
         }
 
-        public async Task<IEnumerable<SignalOrder>?> GetRecentOrdersAsync(Exchange exchange, Int16 numberOfOrders, String ticker)
+        public async Task<IEnumerable<SignalOrder>?> GetRecentOrdersAsync(Exchange exchange, short numberOfOrders, string ticker)
         {
             var db = new SqlConnection(_connectionString);
 
@@ -184,7 +184,7 @@ namespace TCK.Bot.Data
             });
         }
 
-        internal void DeleteOrdersWithTicker(String ticker)
+        internal void DeleteOrdersWithTicker(string ticker)
         {
             var db = new SqlConnection(_connectionString);
 

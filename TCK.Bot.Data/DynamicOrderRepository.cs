@@ -8,7 +8,7 @@ namespace TCK.Bot.Data
 {
     internal sealed class DynamicOrderRepository : IDynamicOrderRepository
     {
-        private readonly String _connectionString;
+        private readonly string _connectionString;
 
         public DynamicOrderRepository(IOptions<UrlOptions> urlOptions)
         {
@@ -50,7 +50,7 @@ namespace TCK.Bot.Data
             return orderGroups.ToArray();
         }
 
-        public async Task<DynamicOrder[]?> GetRecentOrdersByTickerAsync(Exchange exchange, String ticker)
+        public async Task<DynamicOrder[]?> GetRecentOrdersByTickerAsync(Exchange exchange, string ticker)
         {
             var order = await GetRecentOrderByTicker(exchange, ticker);
 
@@ -64,7 +64,7 @@ namespace TCK.Bot.Data
             return orders?.ToArray() ?? null;
         }
 
-        public async Task<IEnumerable<DynamicOrder>?> GetOrdersByOrderGroupIdAsync(String orderGroupId)
+        public async Task<IEnumerable<DynamicOrder>?> GetOrdersByOrderGroupIdAsync(string orderGroupId)
         {
             var db = new SqlConnection(_connectionString);
 
@@ -203,7 +203,7 @@ namespace TCK.Bot.Data
             return orders;
         }
 
-        internal void DeleteOrdersWithTicker(String ticker)
+        internal void DeleteOrdersWithTicker(string ticker)
         {
             var db = new SqlConnection(_connectionString);
 
@@ -217,7 +217,7 @@ namespace TCK.Bot.Data
             });
         }
 
-        private async Task<DynamicOrder> GetRecentOrderByTicker(Exchange exchange, String ticker)
+        private async Task<DynamicOrder> GetRecentOrderByTicker(Exchange exchange, string ticker)
         {
             var db = new SqlConnection(_connectionString);
 

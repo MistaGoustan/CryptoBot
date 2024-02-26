@@ -5,9 +5,9 @@ namespace TCK.Bot.Api
 {
     public class IPRequirement : IAuthorizationRequirement
     {
-        public String Whitelist { get; }
+        public string Whitelist { get; }
 
-        public IPRequirement(String whitelist)
+        public IPRequirement(string whitelist)
         {
             Whitelist = whitelist;
         }
@@ -33,7 +33,7 @@ namespace TCK.Bot.Api
             return Task.CompletedTask;
         }
 
-        private Byte[][] ConvertIpsToRawList(String trustedIps)
+        private Byte[][] ConvertIpsToRawList(string trustedIps)
         {
             var ips = trustedIps.Split(';');
             var rawTrustedIps = new Byte[ips.Length][];

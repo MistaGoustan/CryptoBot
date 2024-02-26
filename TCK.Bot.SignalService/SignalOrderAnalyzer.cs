@@ -16,7 +16,7 @@ namespace TCK.Bot.SignalService
             _orderService = orderService;
         }
 
-        public async Task ForPriceWithTickerAsync(Exchange exchange, Decimal lastPrice, String ticker)
+        public async Task ForPriceWithTickerAsync(Exchange exchange, decimal lastPrice, string ticker)
         {
             var order = _cache.GetSignalOrder(exchange, ticker);
 
@@ -33,10 +33,10 @@ namespace TCK.Bot.SignalService
             }
         }
 
-        private Boolean HasHitStopPrice(Decimal lastPrice, PositionSide side, Decimal stopPrice) =>
+        private bool HasHitStopPrice(decimal lastPrice, PositionSide side, decimal stopPrice) =>
             side is PositionSide.Long ? lastPrice < stopPrice : lastPrice > stopPrice;
 
-        private async Task<SignalOrder> TriggerSellAsync(SignalOrder order, Decimal sellPrice)
+        private async Task<SignalOrder> TriggerSellAsync(SignalOrder order, decimal sellPrice)
         {
             var placedOrder = order.PositionSide is PositionSide.Long ?
                         await _orderService.PlaceMarketSellAsync(order.Exchange, sellPrice, order.Quantity, order.PositionSide, order.Ticker) :

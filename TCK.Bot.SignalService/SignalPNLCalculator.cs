@@ -2,7 +2,7 @@
 {
     public sealed class SignalPNLCalculator : ISignalPNLCalculator
     {
-        public Decimal ForOrder(SignalOrder order)
+        public decimal ForOrder(SignalOrder order)
         {
             var sizeBought = order.BuyPrice * order.Quantity;
             var sizeSold = order.SellPrice * order.Quantity;

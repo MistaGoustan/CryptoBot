@@ -26,7 +26,7 @@ namespace TCK.Exchanges.Binance
             _logger = logger;
         }
 
-        public async Task SubscribeAsync(String ticker)
+        public async Task SubscribeAsync(string ticker)
         {
             if (Subscriptions.Any(s => s.Ticker == ticker))
             {

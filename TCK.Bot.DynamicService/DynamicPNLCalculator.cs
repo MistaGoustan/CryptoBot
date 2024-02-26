@@ -42,7 +42,7 @@ namespace TCK.Bot.DynamicService
                     sizeBought - sizeSold - totaledFee;
         }
 
-        private async Task<Decimal> GetTotalFundingFeeAsync(DynamicOrder[] orders)
+        private async Task<decimal> GetTotalFundingFeeAsync(DynamicOrder[] orders)
         {
             var firstBuyDate = orders[orders.Length - 1].BuyDate;
             var fundingFee = await _market.GetTotalFundingFeeAsync(orders[0].Exchange, firstBuyDate, orders[0].Ticker);

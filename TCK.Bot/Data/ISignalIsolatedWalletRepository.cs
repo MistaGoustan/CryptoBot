@@ -2,8 +2,8 @@
 {
     public interface ISignalIsolatedWalletRepository
     {
-        void DeleteWalletWithTicker(String ticker);
-        Task<Decimal> GetBalanceAsync(Exchange exchange, String ticker);
-        Task UpdateBalanceAsync(String ticker, Decimal orderSize, Decimal price);
+        void DeleteWalletWithTicker(string ticker);
+        Task<decimal> GetBalanceAsync(Exchange exchange, string ticker);
+        Task UpdateBalanceAsync(string ticker, decimal orderSize, decimal price);
     }
 }

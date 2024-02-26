@@ -12,7 +12,7 @@ namespace TCK.Bot.Data
     internal sealed class DynamicIsolatedWalletRepository : IDynamicIsolatedWalletRepository
     {
         private readonly IDbConnection _db;
-        private readonly Decimal _defaultWalletSize;
+        private readonly decimal _defaultWalletSize;
         private readonly ITickerValidator _tickerValidator;
         private readonly TelemetryClient _telemetry;
 
@@ -26,7 +26,7 @@ namespace TCK.Bot.Data
             _telemetry = telemetry;
         }
 
-        public void DeleteWalletWithTicker(String ticker)
+        public void DeleteWalletWithTicker(string ticker)
         {
             var sql =
                 "DELETE FROM [dbo].[DynamicIsolatedWallet] " +
@@ -38,7 +38,7 @@ namespace TCK.Bot.Data
             });
         }
 
-        public async Task<DynamicIsolatedWallet> GetWalletAsync(Exchange exchange, String ticker)
+        public async Task<DynamicIsolatedWallet> GetWalletAsync(Exchange exchange, string ticker)
         {
             var sql =
                 "SELECT * FROM [dbo].[DynamicIsolatedWallet] " +
@@ -73,7 +73,7 @@ namespace TCK.Bot.Data
             return updatedWallet;
         }
 
-        private async Task<DynamicIsolatedWallet> CreateWalletAsync(Exchange exchange, String ticker)
+        private async Task<DynamicIsolatedWallet> CreateWalletAsync(Exchange exchange, string ticker)
         {
             if (!await _tickerValidator.TickerPairExistsAsync(exchange, ticker))
                 throw new Exception($"{nameof(DynamicIsolatedWallet)} creation exception: Ticker pair does not exist on Binance");

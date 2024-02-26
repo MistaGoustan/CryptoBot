@@ -2,10 +2,10 @@
 {
     public class Trade
     {
-        public Decimal Fee { get; set; }
-        public String OrderId { get; set; } = default!;
-        public Decimal Price { get; set; }
-        public Decimal Quantity { get; set; }
+        public decimal Fee { get; set; }
+        public string OrderId { get; set; } = default!;
+        public decimal Price { get; set; }
+        public decimal Quantity { get; set; }
         public OrderSide Side { get; set; }
     }
 }

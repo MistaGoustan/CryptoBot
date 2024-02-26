@@ -29,12 +29,12 @@ namespace TCK.Exchanges.Binance
         });
 
 
-        private String _listenKey = String.Empty;
-        protected String ListenKey
+        private string _listenKey = string.Empty;
+        protected string ListenKey
         {
             get
             {
-                if (String.IsNullOrWhiteSpace(_listenKey))
+                if (string.IsNullOrWhiteSpace(_listenKey))
                 {
                     _listenKey = GetListenKey().GetAwaiter().GetResult();
                 }
@@ -43,7 +43,7 @@ namespace TCK.Exchanges.Binance
             }
         }
 
-        private async Task<String> GetListenKey()
+        private async Task<string> GetListenKey()
         {
             var listenKeyResult = await Client.SpotApi.Account.StartUserStreamAsync();
 

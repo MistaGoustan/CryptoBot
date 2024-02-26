@@ -9,7 +9,7 @@
             _market = market;
         }
 
-        public async Task<Boolean> TickerPairExistsAsync(Exchange exchange, String ticker)
+        public async Task<bool> TickerPairExistsAsync(Exchange exchange, string ticker)
         {
             return await _market.TickerPairExistsAsync(exchange, ticker);
         }
